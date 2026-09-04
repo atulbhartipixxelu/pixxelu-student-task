@@ -5,7 +5,7 @@ export const BANNER_SLIDES = [
   { src: "/banners/slider01.jpg", alt: "UI/UX Designer course" },
   { src: "/banners/slider02.jpg", alt: "Full Stack Web Development course" },
   { src: "/banners/slider03.jpg", alt: "Graphic Design course" },
-  { src: "/banners/slider04.jpg", alt: "UI/UX Designer program" },
+  { src: "/banners/slider04.jpg", alt: "AI-Powered Web Design course" },
   { src: "/banners/slider05.jpg", alt: "Web Development course" },
 ];
 

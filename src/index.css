@@ -2033,7 +2033,11 @@ details.faq-item p {
     min-width: 0;
     flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
+  }
+
+  .logo img {
+    height: 34px;
   }
 
   .header-divider {
@@ -2047,7 +2051,7 @@ details.faq-item p {
     white-space: nowrap;
     overflow: hidden;
     max-width: 100%;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.25;
     letter-spacing: 0.04em;
   }
@@ -2063,13 +2067,13 @@ details.faq-item p {
 
   .ai-spark,
   .ai-spark svg {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
   }
 
   .header-cta {
     flex-shrink: 0;
-    gap: 8px;
+    margin-left: auto;
   }
 
   .header-cta .pixxelu_button {
@@ -2079,11 +2083,11 @@ details.faq-item p {
   .header-phone {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
     padding: 0;
     border: 0;
     background: none;
-    color: var(--accent);
+    color: #000;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.01em;
@@ -2093,14 +2097,71 @@ details.faq-item p {
     line-height: 1;
   }
 
-  .header-phone svg {
-    width: 16px;
-    height: 16px;
+  .header-call-icon {
+    position: relative;
+    width: 30px;
+    height: 30px;
     flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .header-call-icon svg {
+    position: relative;
+    z-index: 1;
+    width: 15px;
+    height: 15px;
+    animation: header-call-shake 1.4s ease-in-out infinite;
+  }
+
+  .header-call-wave {
+    position: absolute;
+    inset: -3px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    opacity: 0;
+    animation: header-call-ring 1.6s ease-out infinite;
+  }
+
+  .header-call-wave:nth-child(2) {
+    animation-delay: 0.55s;
   }
 
   .header-phone:hover {
     color: #000;
+  }
+
+  @keyframes header-call-ring {
+    0% {
+      transform: scale(0.7);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1.45);
+      opacity: 0;
+    }
+  }
+
+  @keyframes header-call-shake {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    20% {
+      transform: rotate(-14deg);
+    }
+    40% {
+      transform: rotate(12deg);
+    }
+    60% {
+      transform: rotate(-8deg);
+    }
+    80% {
+      transform: rotate(6deg);
+    }
   }
   .container,
   .footer-float {
@@ -2243,7 +2304,7 @@ details.faq-item p {
   }
 
   .logo img {
-    height: 24px;
+    height: 32px;
     width: auto;
   }
 
@@ -2253,23 +2314,19 @@ details.faq-item p {
 
   .header-phone {
     font-size: 12px;
-  }
-
-  .header-phone svg {
-    width: 15px;
-    height: 15px;
+    color: #000;
   }
 
   .header-tagline,
   .header-tagline-city,
   .ai-letters {
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .ai-spark,
   .ai-spark svg {
-    width: 9px;
-    height: 9px;
+    width: 11px;
+    height: 11px;
   }
 
   .hero h1 {

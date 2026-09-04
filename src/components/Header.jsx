@@ -60,6 +60,8 @@ export default function Header({ onOpenDemo }) {
               >
                 Book Now Free Demo
               </a>
+              <span className="topbar-divider" aria-hidden="true" />
+              <a href="tel:+919218000707">Call Us +91 92180 00707</a>
             </div>
           ))}
         </div>
@@ -122,16 +124,17 @@ export default function Header({ onOpenDemo }) {
             <Button type="button" onClick={onOpenDemo}>
               Free Demo
             </Button>
-            <a className="header-phone" href="tel:+919218000707">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M7.4 3.8h2.7l1.1 3.2-1.7 1.2a12.4 12.4 0 0 0 6.3 6.3l1.2-1.7 3.2 1.1v2.7c0 .7-.6 1.3-1.3 1.3C10.8 18 6 13.2 6 7.1c0-.8.6-1.3 1.4-1.3Z"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span>92180 00707</span>
+            <a className="header-phone" href="tel:+919218000707" aria-label="Call 92180 00707">
+              <span className="header-call-icon" aria-hidden="true">
+                <span className="header-call-wave" />
+                <span className="header-call-wave" />
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M8.2 4.4c.3-.3.8-.4 1.2-.2l2.2 1.1c.4.2.6.6.5 1.1l-.4 2.1c0 .3-.2.6-.5.7l-1.3.6a11 11 0 0 0 5.3 5.3l.6-1.3c.2-.3.5-.4.8-.5l2.1-.4c.4-.1.9.1 1.1.5l1.1 2.2c.2.4.1.9-.2 1.2l-1.2 1.2c-.4.4-1 .6-1.6.5C12.2 18.7 5.3 11.8 5.1 6.2c-.1-.6.1-1.2.5-1.6L8.2 4.4Z"
+                    fill="#fff"
+                  />
+                </svg>
+              </span>
             </a>
           </div>
         </div>
