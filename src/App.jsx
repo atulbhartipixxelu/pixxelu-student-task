@@ -4,6 +4,7 @@ import DemoModal from "./components/DemoModal.jsx";
 import ProgramSection from "./components/ProgramSection.jsx";
 import Button from "./components/Button.jsx";
 import BannerSlider from "./components/BannerSlider.jsx";
+import MobileBannerSlider from "./components/MobileBannerSlider.jsx";
 import TrustedMarquee from "./components/TrustedMarquee.jsx";
 import CourseGrid from "./components/CourseGrid.jsx";
 import PlacementSection from "./components/PlacementSection.jsx";
@@ -36,6 +37,7 @@ export default function App() {
       <main id="top">
         <div id="home">
           <BannerSlider onApply={openDemo} />
+          <MobileBannerSlider />
         </div>
 
         <section className="hero" id="about">

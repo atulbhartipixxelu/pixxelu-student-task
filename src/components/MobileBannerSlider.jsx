@@ -3,6 +3,10 @@ import "./MobileBannerSlider.css";
 
 const SLIDES = [
   {
+    src: "/mobile-banners/ui-ux-design.jpg",
+    alt: "UI/UX Designer 6-month offline program",
+  },
+  {
     src: "/mobile-banners/ai-web-design.jpg",
     alt: "AI-Powered Web Design",
   },

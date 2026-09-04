@@ -55,6 +55,12 @@
   background: var(--accent);
 }
 
+@media (max-width: 900px) {
+  .mobile-banner {
+    display: block;
+  }
+}
+
 @media (min-width: 901px) {
   .mobile-banner {
     display: none !important;
