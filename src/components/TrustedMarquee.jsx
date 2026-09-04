@@ -49,26 +49,26 @@ function LogoRow({ items, direction }) {
 
 export default function TrustedMarquee() {
   return (
-    <section className="trust-section" aria-label="Trusted by industry">
+    <section className="trust-section" aria-label="AI-powered technologies">
       <div className="container">
         <div className="trust-head">
           <p className="trust-badge">
             <span className="trust-dot" />
-            Trusted worldwide
+            AI-Powered Academy
           </p>
-          <h2>Over 700+ organizations already hire from Pixxelu Academy</h2>
+          <h2>Master industry technologies with AI-powered, job-ready skills</h2>
           <div className="trust-stats">
             <div>
-              <strong>9+</strong>
-              <span>Branches</span>
+              <strong>16+</strong>
+              <span>Technologies</span>
             </div>
             <div>
-              <strong>4.9/5</strong>
-              <span>Avg. Rating</span>
+              <strong>AI</strong>
+              <span>Powered Workflows</span>
             </div>
             <div>
-              <strong>12,000+</strong>
-              <span>Learners</span>
+              <strong>50+</strong>
+              <span>Live Projects</span>
             </div>
           </div>
         </div>
@@ -79,7 +79,8 @@ export default function TrustedMarquee() {
         </div>
 
         <p className="trust-foot">
-          <span>+ 690 more</span> organizations already hire Pixxelu talent
+          <span>16+ technologies</span> · AI-powered workflows · 50+ live projects — built for
+          job-ready skills
         </p>
       </div>
     </section>

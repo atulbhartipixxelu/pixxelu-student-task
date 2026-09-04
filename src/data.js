@@ -129,6 +129,75 @@ export const PROGRAMS = [
   },
 ];
 
+export const COURSE_CARDS = [
+  {
+    title: "UI/UX Design",
+    intro: "Learn Figma, Photoshop, and UX research to design job-ready product interfaces.",
+    duration: "2–6 Months",
+    image: "/classroom.jpg",
+    tools: [
+      { name: "Figma", file: "figma.svg" },
+      { name: "Photoshop", file: "photoshop.svg" },
+      { name: "Illustrator", file: "illustrator.svg" },
+    ],
+  },
+  {
+    title: "Graphic Design",
+    intro: "Build a creative portfolio with Photoshop, Illustrator, and AI-assisted design workflows.",
+    duration: "2–4 Months",
+    image: "/workshop.jpg",
+    tools: [
+      { name: "Photoshop", file: "photoshop.svg" },
+      { name: "Illustrator", file: "illustrator.svg" },
+      { name: "Adobe", file: "adobe.svg" },
+    ],
+  },
+  {
+    title: "Front-End Development",
+    intro: "Turn designs into fast websites with React, Vue, and Tailwind CSS.",
+    duration: "3–6 Months",
+    image: "/coding.jpg",
+    tools: [
+      { name: "React", file: "react.svg" },
+      { name: "Vue", file: "vue.svg" },
+      { name: "Tailwind", file: "tailwind.svg" },
+    ],
+  },
+  {
+    title: "Back-End Development",
+    intro: "Build secure APIs and databases with Laravel, Node.js, and SQL.",
+    duration: "3–6 Months",
+    image: "/lab.jpg",
+    tools: [
+      { name: "Laravel", file: "laravel.svg" },
+      { name: "Node.js", file: "nodejs.svg" },
+      { name: "SQL", file: "sql.svg" },
+    ],
+  },
+  {
+    title: "CMS & E-commerce",
+    intro: "Launch stores and sites on Shopify, WordPress, Wix, and Squarespace.",
+    duration: "2–5 Months",
+    image: "/seminar.jpg",
+    tools: [
+      { name: "Shopify", file: "shopify.svg" },
+      { name: "WordPress", file: "wordpress.svg" },
+      { name: "Wix", file: "wix.svg" },
+    ],
+  },
+  {
+    title: "Digital Marketing & SEO",
+    intro: "Grow traffic and conversions with SEO, CRO, schema, and AI content.",
+    duration: "2–4 Months",
+    image: "/event.jpg",
+    tools: [
+      { name: "Google", file: "google.svg" },
+      { name: "Adobe", file: "adobe.svg" },
+      { name: "Amazon", file: "amazon.svg" },
+    ],
+  },
+];
+
 export const COMBOS = [
   {
     title: "Full Stack Combo Pack with AI",

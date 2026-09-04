@@ -8,15 +8,16 @@ import SuccessStories from "./components/SuccessStories.jsx";
 import Button from "./components/Button.jsx";
 import BannerSlider from "./components/BannerSlider.jsx";
 import TrustedMarquee from "./components/TrustedMarquee.jsx";
-import { WhatsAppIcon, TeamIcon } from "./components/Icons.jsx";
+import CourseGrid from "./components/CourseGrid.jsx";
+import { WhatsAppIcon } from "./components/Icons.jsx";
 import {
   BRANCHES,
   BRANCH_CARDS,
   COMBOS,
   CONTACT_BRANCHES,
+  COURSE_CARDS,
   COURSES,
   FAQS,
-  PROGRAMS,
 } from "./data.js";
 
 function CountUp({ target }) {
@@ -87,30 +88,24 @@ export default function App() {
           <BannerSlider onApply={openDemo} />
         </div>
 
-        <TrustedMarquee />
-
-        <section className="hero">
+        <section className="hero" id="about">
           <div className="container">
             <div className="hero-grid">
               <div className="about-visual">
-                <img src="/classroom.jpg" alt="Students in a classroom training session" />
-                <div className="about-callout">
-                  <small>Job ready first.</small>
-                  <p>Classroom training that actually prepares you for interviews.</p>
-                </div>
+                <img src="/classroom.jpg" alt="Students learning together at Pixxelu Academy" />
               </div>
 
               <div className="about-copy">
-                <p className="about-kicker">About Pixxelu Academy</p>
-                <h1>The Practical Approach to Job-Ready Skills</h1>
+                <p className="about-kicker">About Us</p>
+                <h1>Pixxelu Academy — AI-powered classroom training in Dharamshala</h1>
                 <p>
-                  Pixxelu Academy delivers classroom-first IT training in Dharamshala — live projects,
-                  expert mentors, and placement support until you get hired.
+                  We are a classroom-first IT academy helping students become job-ready with
+                  AI-powered skills, live projects, and placement support.
                 </p>
                 <p>
-                  From UI/UX and full stack to digital marketing, every program is built around real
-                  industry work, not slides. Join a <strong>6 months &amp; weeks industrial training</strong>{" "}
-                  path designed for interviews and internships.
+                  Our programs cover the tools used in real product teams — from{" "}
+                  <strong>Figma, React, Shopify, and Node.js</strong> to digital marketing — so you
+                  learn by building, not by watching slides.
                 </p>
                 <Button type="button" onClick={openDemo}>
                   Free Book Demo
@@ -122,26 +117,30 @@ export default function App() {
               <li>
                 <strong>4.9/5</strong>
                 <b>Rating</b>
-                <span>Based on 16,430+ reviews</span>
+                <span>Trusted by learners</span>
               </li>
               <li>
                 <strong>2–6</strong>
                 <b>Duration</b>
-                <span>Months, flexible batches</span>
+                <span>Flexible batches</span>
               </li>
               <li>
                 <strong>2–4</strong>
-                <b>Live Project</b>
-                <span>Real industry projects</span>
+                <b>Live Projects</b>
+                <span>Industry work</span>
               </li>
               <li>
                 <strong>100%</strong>
                 <b>Certification</b>
-                <span>Completion guarantee</span>
+                <span>On completion</span>
               </li>
             </ul>
           </div>
         </section>
+
+        <TrustedMarquee />
+
+        <CourseGrid onOpenDemo={openDemo} />
 
         <section className="cta-strip">
           <div className="container cta-strip-inner">
@@ -153,49 +152,6 @@ export default function App() {
         </section>
 
         <ProgramSection />
-
-        <section className="section section-alt" id="courses">
-          <div className="container center">
-            <h2>Specialized Delivery Teams</h2>
-            <p className="lead">
-              Five focused teams covering design, engineering, commerce, and growth — so every project
-              moves from Figma to production with clear ownership.
-            </p>
-            <div className="course-grid">
-              {PROGRAMS.map((course, index) => (
-                <article className="course-card team-card" key={course.title}>
-                  <div className="team-top">
-                    <div className="team-icon">
-                      <TeamIcon name={course.icon} />
-                    </div>
-                    <span className="team-count">{String(index + 1).padStart(2, "0")}</span>
-                  </div>
-                  <h3>{course.title}</h3>
-                  <p className="team-focus">{course.focus}</p>
-                  <p className="team-intro">{course.intro}</p>
-                  <div className="team-tools">
-                    {course.tools.map((tool) => (
-                      <span key={tool}>{tool}</span>
-                    ))}
-                  </div>
-                  <ul className="team-points">
-                    {course.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-            <div className="course-actions">
-              <Button type="button" className="btn-lg" onClick={openDemo}>
-                Schedule Free Demo Class
-              </Button>
-              <Button href="#enquire" variant="outline" className="btn-lg">
-                Download Course Curriculum
-              </Button>
-            </div>
-          </div>
-        </section>
 
         <section className="section" id="combos">
           <div className="container">
@@ -702,7 +658,7 @@ export default function App() {
             <div>
               <h4>Popular Course</h4>
               <ul>
-                {PROGRAMS.map((course) => (
+                {COURSE_CARDS.map((course) => (
                   <li key={course.title}>
                     <a href="#courses">{course.title}</a>
                   </li>
