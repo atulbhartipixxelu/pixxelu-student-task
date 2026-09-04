@@ -16,6 +16,8 @@ export default function LeadForm({
   className = "form-card",
   submitStyle,
   note,
+  title,
+  subtitle,
 }) {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
@@ -130,6 +132,12 @@ export default function LeadForm({
 
   return (
     <form className={className} onSubmit={onSubmit} noValidate>
+      {title ? (
+        <div className="form-card-head">
+          <h3>{title}</h3>
+          {subtitle ? <p>{subtitle}</p> : null}
+        </div>
+      ) : null}
       <div className={`form-success${success ? " show" : ""}`} role="status">
         {success}
       </div>

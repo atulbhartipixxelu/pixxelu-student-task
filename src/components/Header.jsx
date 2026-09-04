@@ -5,8 +5,8 @@ import Button from "./Button.jsx";
 const LINKS = [
   { href: "#courses", label: "Course" },
   { href: "#stories", label: "Testimonial" },
-  { href: "#success", label: "Success Story" },
-  { href: "#contact", label: "Contact" },
+  { href: "#placements", label: "Success Story" },
+  { href: "#enquire", label: "Contact" },
 ];
 
 function scrollToHash(hash) {

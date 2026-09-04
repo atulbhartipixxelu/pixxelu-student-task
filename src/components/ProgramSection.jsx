@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "./Button.jsx";
+import { WhatsAppIcon } from "./Icons.jsx";
 
 function isValidPhone(value) {
   return /^\d{10}$/.test(
@@ -44,8 +45,10 @@ function ApplyForm() {
 
   return (
     <form className="apply-card" onSubmit={onSubmit} noValidate>
-      <h3>Apply for the Program</h3>
-      <p className="sub">Fill in your details, our team will call you shortly.</p>
+      <div className="apply-card-head">
+        <h3>Apply for Digital Marketing</h3>
+        <p className="sub">3-month AI-powered classroom program. Our team will call you shortly.</p>
+      </div>
       <div className={`form-success${success ? " show" : ""}`} role="status">
         {success}
       </div>
@@ -96,7 +99,7 @@ function ApplyForm() {
           Apply Now
         </Button>
       </div>
-      <p className="apply-note">Enrolments closing soon.</p>
+      <p className="apply-note">Seats closing soon for the next 3-month batch.</p>
     </form>
   );
 }
@@ -105,38 +108,72 @@ export default function ProgramSection() {
   return (
     <section className="program-section" id="program">
       <div className="container program-layout">
-        <div>
-          <span className="program-kicker">12-Week Live Online Program</span>
-          <h2>Learn Advanced Digital Marketing, 100% Practically (with AI)</h2>
+        <div className="program-info">
+          <span className="program-kicker">
+            <span className="program-ai">AI-Powered</span>
+            3-Month Classroom Program
+          </span>
+          <h2>
+            Learn Digital Marketing with <em>AI-powered skills</em>
+          </h2>
           <p className="program-copy">
-            Master in-demand marketing skills through{" "}
-            <span className="program-hl">24+ live sessions</span>, real campaigns and dedicated{" "}
-            <span className="program-hl">1-on-1 Support</span> from working mentors, plus{" "}
-            <span className="program-hl">Placement Assistance</span> till you start interviewing.
+            A practical 3-month course in SEO, Google Ads, Meta Ads, content and analytics — built
+            around <span className="program-hl">AI-powered workflows</span>, live campaigns and{" "}
+            <span className="program-hl">placement support</span>.
           </p>
           <p className="program-copy">
-            Learn SEO, ads, content and AI tools the way agencies work today — the same practical
-            classroom approach trusted by <span className="program-hl">1000+ learners</span>.
+            Train in the classroom with ChatGPT, Gemini and AI ad tools the way agencies work today.
+            Finish with real projects, a job-ready portfolio and interview prep.
           </p>
+          <div className="program-tools">
+            <span>SEO</span>
+            <span>Google Ads</span>
+            <span>Meta Ads</span>
+            <span>AI Content</span>
+            <span>Analytics</span>
+          </div>
           <div className="program-facts">
-            <div className="program-fact">
-              <span>First live class on</span>
-              <strong>5th Sept&apos;26</strong>
-            </div>
-            <div className="program-fact">
+            <div>
               <span>Program duration</span>
-              <strong>12 Weeks</strong>
+              <strong>3 Months</strong>
             </div>
-            <div className="program-fact">
-              <span>Live weekend classes</span>
-              <strong>70+ Hours</strong>
+            <div>
+              <span>Training style</span>
+              <strong>AI-Powered</strong>
             </div>
-            <div className="program-fact">
+            <div>
+              <span>Live campaigns</span>
+              <strong>Real Projects</strong>
+            </div>
+            <div>
               <span>Rating</span>
-              <strong>
-                <span className="star">★</span> 4.9/5
+              <strong className="program-rating">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2.8l2.47 6.28 6.73.42-5.2 4.22 1.7 6.52L12 16.9l-5.7 3.34 1.7-6.52-5.2-4.22 6.73-.42L12 2.8z" />
+                </svg>
+                4.9/5
               </strong>
             </div>
+          </div>
+          <div className="program-actions">
+            <a
+              className="program-wa"
+              href="https://wa.me/919218000707"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <WhatsAppIcon size={18} />
+              WhatsApp
+            </a>
+            <a className="program-call" href="tel:+919218000707">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 2.9 3 2.4 3.4 2 4 2h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1.1l-2.2 2.2z"
+                />
+              </svg>
+              Call +91 92180 00707
+            </a>
           </div>
         </div>
         <ApplyForm />

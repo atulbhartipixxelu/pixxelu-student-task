@@ -1,0 +1,122 @@
+.event-highlights {
+  padding: 72px 0 56px;
+  background: var(--gray);
+  overflow: hidden;
+}
+
+.event-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 36px;
+}
+
+.event-head h2 {
+  margin: 0 0 20px;
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.event-head p {
+  margin: 0;
+  color: #555;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.event-head p strong {
+  color: #111;
+  font-weight: 700;
+}
+
+.event-rows {
+  display: grid;
+  gap: 16px;
+}
+
+.event-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.event-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  animation: event-scroll 240s linear infinite;
+}
+
+.event-marquee.reverse .event-track {
+  animation-name: event-scroll-reverse;
+  animation-duration: 260s;
+}
+
+.event-rows:hover .event-track {
+  animation-play-state: paused;
+}
+
+.event-group {
+  display: flex;
+  gap: 16px;
+  padding-right: 16px;
+}
+
+.event-card {
+  flex: 0 0 auto;
+  overflow: hidden;
+  width: 340px;
+  height: 268px;
+  border-radius: 16px;
+  background: #ddd;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.event-card img,
+.event-card iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+  border: 0;
+  pointer-events: none;
+}
+
+.event-card-video {
+  width: 400px;
+  background: #111;
+}
+
+@keyframes event-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes event-scroll-reverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .event-highlights {
+    padding: 52px 0 40px;
+  }
+
+  .event-card {
+    width: 260px;
+    height: 210px;
+  }
+
+  .event-card-video {
+    width: 310px;
+  }
+}

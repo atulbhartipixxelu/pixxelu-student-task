@@ -56,10 +56,14 @@ export default function PlacementSection() {
       <div className="placement-cta">
         <div className="container">
           <div className="placement-cta-board">
-            <h3>हमारे Students ने Skills को Jobs में बदला है — अब आपकी बारी है! 🚀</h3>
+            <h3>
+              <span>हमारे Students ने Skills को Jobs में बदला है</span>
+              <span>अब आपकी बारी है! 🚀</span>
+            </h3>
             <p>
-              Industry-Relevant Skills, 100% Practical Training और Real Projects के साथ खुद को
-              Job-Ready बनाइए और अपने बेहतर Career की शुरुआत कीजिए।
+              <strong>Industry-Relevant Skills</strong>, <strong>100% Practical Training</strong> और{" "}
+              <strong>Real Projects</strong> के साथ खुद को <strong>Job-Ready</strong> बनाइए और अपने
+              बेहतर <strong>Career</strong> की शुरुआत कीजिए।
             </p>
             <div className="placement-cta-actions">
               <a
