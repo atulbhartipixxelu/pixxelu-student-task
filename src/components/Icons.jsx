@@ -83,3 +83,40 @@ export function TeamIcon({ name, size = 28 }) {
     </svg>
   );
 }
+
+export function CalendarIcon({ size = 22 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect x="3.2" y="5" width="17.6" height="15.2" rx="3" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M3.2 10h17.6" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M8 3.2v3.6M16 3.2v3.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <rect x="7.2" y="13.2" width="3.2" height="3.2" rx="0.7" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function ArrowIcon({ size = 14 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M5 12h12M13 6l6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
