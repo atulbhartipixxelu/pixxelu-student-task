@@ -3,13 +3,9 @@ import { WhatsAppIcon } from "./Icons.jsx";
 import Button from "./Button.jsx";
 
 const LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#program", label: "Program" },
-  { href: "#courses", label: "Courses" },
-  { href: "#combos", label: "Combos" },
-  { href: "#success", label: "Success" },
-  { href: "#branches", label: "Branches" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#courses", label: "Course" },
+  { href: "#stories", label: "Testimonial" },
+  { href: "#success", label: "Success Story" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -21,7 +17,7 @@ function scrollToHash(hash) {
 }
 
 export default function Header({ menuOpen, onToggleMenu, onOpenDemo, onCloseMenu }) {
-  const [active, setActive] = useState("#home");
+  const [active, setActive] = useState("#courses");
 
   useEffect(() => {
     const sections = LINKS.map((link) => document.getElementById(link.href.slice(1))).filter(Boolean);
@@ -52,7 +48,7 @@ export default function Header({ menuOpen, onToggleMenu, onOpenDemo, onCloseMenu
   return (
     <>
       <div className="topbar">
-        100% Practical, Personalized, Classroom Training and Assured Job
+        100% Practical Training. Real Projects. AI-Powered Skills. Job-Ready Career.
         <a
           href="#demo"
           onClick={(event) => {
@@ -66,14 +62,42 @@ export default function Header({ menuOpen, onToggleMenu, onOpenDemo, onCloseMenu
 
       <header className="header">
         <div className="container header-inner">
-          <a
-            className="logo"
-            href="#home"
-            aria-label="Home"
-            onClick={(event) => onNavClick(event, "#home")}
-          >
-            <img src="/brand-logo.png" alt="pixxelu Digital Technology" />
-          </a>
+          <div className="header-brand">
+            <a
+              className="logo"
+              href="#home"
+              aria-label="Home"
+              onClick={(event) => onNavClick(event, "#home")}
+            >
+              <img src="/header-logo.png" alt="pixxelu Digital Technology" />
+            </a>
+            <span className="header-divider" aria-hidden="true" />
+            <p className="header-tagline">
+              <span className="header-tagline-top">
+                <span className="ai-letters">AI</span>
+                <span className="ai-spark" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      className="ai-spark-star"
+                      d="M12 2.2 13.7 8.3 20 10 13.7 11.7 12 17.8 10.3 11.7 4 10 10.3 8.3 12 2.2Z"
+                      fill="url(#aiSparkGrad)"
+                    />
+                    <circle className="ai-spark-dot ai-spark-dot-a" cx="19.2" cy="5.2" r="1.15" fill="#ffd36a" />
+                    <circle className="ai-spark-dot ai-spark-dot-b" cx="5.1" cy="16.4" r="0.9" fill="#dc4a26" />
+                    <defs>
+                      <linearGradient id="aiSparkGrad" x1="4" y1="2" x2="20" y2="18" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#ffd36a" />
+                        <stop offset="0.5" stopColor="#dc4a26" />
+                        <stop offset="1" stopColor="#ff8a3d" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </span>
+                Powered Academy
+              </span>
+              <span className="header-tagline-city">Dharamshala</span>
+            </p>
+          </div>
 
           <ul className="nav">
             {LINKS.map((link) => (
@@ -92,14 +116,14 @@ export default function Header({ menuOpen, onToggleMenu, onOpenDemo, onCloseMenu
           <div className="header-cta">
             <a
               className="phone-link"
-              href="https://wa.me/919317788822"
+              href="https://wa.me/919218000707"
               target="_blank"
               rel="noreferrer"
             >
               <span className="wa" aria-hidden="true">
                 <WhatsAppIcon />
               </span>
-              <span>+91 9317788822</span>
+              <span className="phone-num">+91 92180 00707</span>
             </a>
             <Button type="button" onClick={onOpenDemo}>
               Free Demo

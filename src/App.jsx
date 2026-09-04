@@ -7,7 +7,7 @@ import ProgramSection from "./components/ProgramSection.jsx";
 import SuccessStories from "./components/SuccessStories.jsx";
 import Button from "./components/Button.jsx";
 import BannerSlider from "./components/BannerSlider.jsx";
-import MobileBannerSlider from "./components/MobileBannerSlider.jsx";
+import TrustedMarquee from "./components/TrustedMarquee.jsx";
 import { WhatsAppIcon, TeamIcon } from "./components/Icons.jsx";
 import {
   BRANCHES,
@@ -85,113 +85,61 @@ export default function App() {
       <main id="top">
         <div id="home">
           <BannerSlider onApply={openDemo} />
-          <MobileBannerSlider />
         </div>
 
+        <TrustedMarquee />
+
         <section className="hero">
-          <div className="container hero-grid">
-            <div>
-              <span className="kicker">Chandigarh · Mohali · Panchkula</span>
-              <h1>
-                An Advanced Web Education and <span>Software Development</span> Company.
-              </h1>
-              <p className="intro">
-                Excellence Technology is a professional company for providing web education and advanced{" "}
-                <strong>6 Months &amp; Weeks Industrial Training</strong> in Chandigarh, Mohali and
-                Panchkula. A leading software development company with classroom-first, job-oriented
-                training.
-              </p>
-              <div className="hero-stats">
-                <div className="stat-pill">
-                  <div className="stat-icon" style={{ background: "#f2f2f2" }}>
-                    ⭐
-                  </div>
-                  <div>
-                    <strong>4.9/5 Rating</strong>
-                    <span>Based on 16,430+ reviews</span>
-                  </div>
-                </div>
-                <div className="stat-pill">
-                  <div className="stat-icon" style={{ background: "#f2f2f2" }}>
-                    ⏱
-                  </div>
-                  <div>
-                    <strong>Duration</strong>
-                    <span>2–6 Months (Flexible Batches)</span>
-                  </div>
-                </div>
-                <div className="stat-pill">
-                  <div className="stat-icon" style={{ background: "#f2f2f2" }}>
-                    📡
-                  </div>
-                  <div>
-                    <strong>Live Projects</strong>
-                    <span>2–4 Real Industry Projects</span>
-                  </div>
-                </div>
-                <div className="stat-pill">
-                  <div className="stat-icon" style={{ background: "#f2f2f2" }}>
-                    🏅
-                  </div>
-                  <div>
-                    <strong>Certification</strong>
-                    <span>100% Certification Guarantee</span>
-                  </div>
+          <div className="container">
+            <div className="hero-grid">
+              <div className="about-visual">
+                <img src="/classroom.jpg" alt="Students in a classroom training session" />
+                <div className="about-callout">
+                  <small>Job ready first.</small>
+                  <p>Classroom training that actually prepares you for interviews.</p>
                 </div>
               </div>
-              <div className="hero-actions">
-                <Button href="tel:+919317788822">Talk With Advisor</Button>
-                <Button href="#courses" variant="outline">
-                  All Courses
-                </Button>
-                <Button href="https://wa.me/919317788822" target="_blank" rel="noreferrer">
-                  Get info on WhatsApp
+
+              <div className="about-copy">
+                <p className="about-kicker">About Pixxelu Academy</p>
+                <h1>The Practical Approach to Job-Ready Skills</h1>
+                <p>
+                  Pixxelu Academy delivers classroom-first IT training in Dharamshala — live projects,
+                  expert mentors, and placement support until you get hired.
+                </p>
+                <p>
+                  From UI/UX and full stack to digital marketing, every program is built around real
+                  industry work, not slides. Join a <strong>6 months &amp; weeks industrial training</strong>{" "}
+                  path designed for interviews and internships.
+                </p>
+                <Button type="button" onClick={openDemo}>
+                  Free Book Demo
                 </Button>
               </div>
             </div>
-            <div className="hero-visual">
-              <div className="review-stack">
-                <article className="review-card tall">
-                  <div className="g-badge" style={{ color: "#fff" }}>
-                    <b>G</b> Google Reviews
-                  </div>
-                  <h4>Classroom training that actually prepares you for interviews.</h4>
-                  <p>Live projects, placement drives, and mentors who stay with you till you get hired.</p>
-                </article>
-                <article className="review-card">
-                  <div className="stars">★★★★★</div>
-                  <h4>Priya Sharma</h4>
-                  <p>“Got placed after 6 months industrial training. Faculty is very practical.”</p>
-                  <div className="g-badge">
-                    <b>G</b> Google · 2 weeks ago
-                  </div>
-                </article>
-                <article className="review-card">
-                  <div className="stars">★★★★★</div>
-                  <h4>Rahul Verma</h4>
-                  <p>“Best full stack course in Mohali. Real projects, not just slides.”</p>
-                  <div className="g-badge">
-                    <b>G</b> Google · 1 month ago
-                  </div>
-                </article>
-                <article className="review-card">
-                  <div className="stars">★★★★★</div>
-                  <h4>Simran Kaur</h4>
-                  <p>“Demo class convinced me. Placement team conducted 5 interviews.”</p>
-                  <div className="g-badge">
-                    <b>G</b> Google · 3 weeks ago
-                  </div>
-                </article>
-                <article className="review-card">
-                  <div className="stars">★★★★★</div>
-                  <h4>Aman Joshi</h4>
-                  <p>“Flexible batches made it easy to join while in college.”</p>
-                  <div className="g-badge">
-                    <b>G</b> Google · 5 days ago
-                  </div>
-                </article>
-              </div>
-            </div>
+
+            <ul className="about-facts">
+              <li>
+                <strong>4.9/5</strong>
+                <b>Rating</b>
+                <span>Based on 16,430+ reviews</span>
+              </li>
+              <li>
+                <strong>2–6</strong>
+                <b>Duration</b>
+                <span>Months, flexible batches</span>
+              </li>
+              <li>
+                <strong>2–4</strong>
+                <b>Live Project</b>
+                <span>Real industry projects</span>
+              </li>
+              <li>
+                <strong>100%</strong>
+                <b>Certification</b>
+                <span>Completion guarantee</span>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -702,59 +650,6 @@ export default function App() {
         </section>
       </main>
 
-      <div className="footer-float" id="locations">
-        <div className="loc-grid">
-          <div className="loc">
-            <div className="pin">📍</div>
-            <h3>Chandigarh</h3>
-            <p>
-              Excellence Technology
-              <br />
-              SCO 62-63, Second Floor, Sector 34A, Sector 34, Chandigarh, 160022
-            </p>
-            <p>
-              <strong>Mobile</strong>: <a href="tel:+919357788822">+91 93577-88822</a>
-            </p>
-          </div>
-          <div className="loc">
-            <div className="pin">📍</div>
-            <h3>Mohali</h3>
-            <p>
-              Excellence Technology
-              <br />
-              C-133 First Floor, Industrial Area Phase-8, Sector-72, Mohali
-            </p>
-            <p>
-              <strong>Mobile</strong>: <a href="tel:+919317788822">+91 93177-88822</a>
-            </p>
-          </div>
-          <div className="loc">
-            <div className="pin">📍</div>
-            <h3>Dharamshala</h3>
-            <p>
-              Excellence Technology
-              <br />
-              Building no. 336A, 2nd Floor, Above IndusInd Bank, Civil Bazar, Dharamshala
-            </p>
-            <p>
-              <strong>Mobile</strong>: <a href="tel:+917710588822">+91 77105-88822</a>
-            </p>
-          </div>
-          <div className="loc">
-            <div className="pin">📍</div>
-            <h3>Hamirpur</h3>
-            <p>
-              Excellence Technology
-              <br />
-              Lower Bazar, Near Shiv Mandir, Hamirpur (Himachal Pradesh)
-            </p>
-            <p>
-              <strong>Mobile</strong>: <a href="tel:+919317788822">+91 93177-88822</a>
-            </p>
-          </div>
-        </div>
-      </div>
-
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">
@@ -788,51 +683,30 @@ export default function App() {
               </div>
             </div>
             <div>
-              <h4>Company</h4>
-              <ul>
+              <h4>Contact Information</h4>
+              <ul className="footer-contact">
                 <li>
-                  <a href="#branches">Our Branches</a>
+                  <strong>Location</strong>
+                  Building 256, Kachari Adda, Chilgari, Dharamshala, Himachal Pradesh 176215
                 </li>
                 <li>
-                  <a href="#enquire">Register Online</a>
+                  <strong>Email</strong>
+                  <a href="mailto:info@excellencetechnology.in">info@excellencetechnology.in</a>
                 </li>
                 <li>
-                  <a
-                    href="#demo"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openDemo();
-                    }}
-                  >
-                    Free Demo Class
-                  </a>
-                </li>
-                <li>
-                  <a href="#stories">Placed Students</a>
-                </li>
-                <li>
-                  <a href="#contact">Work With Us</a>
+                  <strong>Phone</strong>
+                  <a href="tel:+919317788822">+91 93177-88822</a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4>Popular Courses</h4>
+              <h4>Popular Course</h4>
               <ul>
-                <li>
-                  <a href="#courses">Full Stack Web Development</a>
-                </li>
-                <li>
-                  <a href="#courses">Python</a>
-                </li>
-                <li>
-                  <a href="#courses">Digital Marketing</a>
-                </li>
-                <li>
-                  <a href="#courses">Data Science</a>
-                </li>
-                <li>
-                  <a href="#courses">Cyber Security</a>
-                </li>
+                {PROGRAMS.map((course) => (
+                  <li key={course.title}>
+                    <a href="#courses">{course.title}</a>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
@@ -887,12 +761,17 @@ export default function App() {
             </div>
           </div>
         </div>
-        <div className="copy">Copyright © 2010-2026 Excellence technology. All Rights Reserved.</div>
+        <div className="copy">
+          <p className="footer-address">
+            Building 256, Kachari Adda, Chilgari, Dharamshala, Himachal Pradesh 176215
+          </p>
+          Copyright © 2010-2026 Excellence technology. All Rights Reserved.
+        </div>
       </footer>
 
       <a
         className="float-wa"
-        href="https://wa.me/919317788822"
+        href="https://wa.me/919218000707"
         target="_blank"
         rel="noreferrer"
         aria-label="WhatsApp"

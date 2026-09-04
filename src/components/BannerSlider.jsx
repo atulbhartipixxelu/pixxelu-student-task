@@ -1,84 +1,54 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import Button from "./Button.jsx";
 import "./BannerSlider.css";
 
-const SLIDES = [
-  {
-    id: "uiux",
-    meta: "UI/UX",
-    line1: "UI/UX",
-    line2: "DESIGNER.",
-    watermark: "DESIGN",
-    copy: "Learn the right skills, build case studies, get job ready — and design experiences that create impact.",
-    cta: "Start Designing",
-  },
-  {
-    id: "graphic",
-    meta: "GRAPHIC",
-    line1: "GRAPHIC",
-    line2: "DESIGN.",
-    watermark: "CREATE",
-    copy: "Learn. Create. Inspire. A hands-on course for local students who want to shape brands with craft.",
-    cta: "Join Today",
-  },
-  {
-    id: "web",
-    meta: "WEB",
-    line1: "WEB",
-    line2: "DEVELOPMENT.",
-    watermark: "BUILD",
-    copy: "Turn ideas into powerful websites. Learn to build modern, responsive experiences from scratch.",
-    cta: "Start Building",
-  },
-  {
-    id: "fullstack",
-    meta: "FULL STACK",
-    line1: "FULL STACK",
-    line2: "DEVELOPER.",
-    watermark: "CODE",
-    copy: "Build websites to web apps. Code your future and become a job-ready full stack developer.",
-    cta: "Start Your Career",
-  },
-  {
-    id: "ai",
-    meta: "AI DESIGN",
-    line1: "AI-POWERED",
-    line2: "WEB DESIGN.",
-    watermark: "VISION",
-    copy: "Design that speaks. Create stunning, user-friendly websites with smarter AI-led workflows.",
-    cta: "Start Your Journey",
-  },
+export const BANNER_SLIDES = [
+  { src: "/banners/slider01.jpg", alt: "UI/UX Designer course" },
+  { src: "/banners/slider02.jpg", alt: "Full Stack Web Development course" },
+  { src: "/banners/slider03.jpg", alt: "Graphic Design course" },
+  { src: "/banners/slider04.jpg", alt: "UI/UX Designer program" },
+  { src: "/banners/slider05.jpg", alt: "Web Development course" },
 ];
 
 export default function BannerSlider({ onApply }) {
   const [index, setIndex] = useState(0);
   const paused = useRef(false);
   const startX = useRef(0);
+  const dragged = useRef(false);
 
   const goTo = useCallback((next) => {
-    setIndex((next + SLIDES.length) % SLIDES.length);
+    setIndex((next + BANNER_SLIDES.length) % BANNER_SLIDES.length);
   }, []);
 
   useEffect(() => {
     const id = setInterval(() => {
-      if (!paused.current) setIndex((current) => (current + 1) % SLIDES.length);
+      if (!paused.current) setIndex((current) => (current + 1) % BANNER_SLIDES.length);
     }, 6500);
     return () => clearInterval(id);
   }, []);
 
   function onPointerDown(event) {
     startX.current = event.clientX;
+    dragged.current = false;
   }
 
   function onPointerUp(event) {
     const delta = event.clientX - startX.current;
-    if (delta > 60) goTo(index - 1);
-    else if (delta < -60) goTo(index + 1);
+    if (Math.abs(delta) > 60) {
+      dragged.current = true;
+      if (delta > 60) goTo(index - 1);
+      else goTo(index + 1);
+    }
+  }
+
+  function onSlideClick() {
+    if (dragged.current) return;
+    onApply();
   }
 
   return (
     <section
       className="banner-slider"
+      aria-label="Course banners"
       onMouseEnter={() => {
         paused.current = true;
       }}
@@ -92,32 +62,11 @@ export default function BannerSlider({ onApply }) {
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
       >
-        {SLIDES.map((slide, i) => (
-          <article className="banner-slide" key={slide.id}>
-            <p className="slide-watermark" aria-hidden="true">
-              {slide.watermark}
-            </p>
-            <div className="slide-grain" aria-hidden="true" />
-
-            <div className="slide-meta">
-              <span>
-                {slide.meta} / {String(i + 1).padStart(2, "0")}
-              </span>
-              <button type="button" onClick={onApply}>
-                Apply Now
-              </button>
-            </div>
-
-            <div className="slide-stage">
-              <h2>
-                <span>{slide.line1}</span>
-                <span className="outline">{slide.line2}</span>
-              </h2>
-              <p>{slide.copy}</p>
-              <Button type="button" onClick={onApply}>
-                {slide.cta}
-              </Button>
-            </div>
+        {BANNER_SLIDES.map((slide) => (
+          <article className="banner-slide" key={slide.src}>
+            <button type="button" className="banner-hit" onClick={onSlideClick} aria-label={slide.alt}>
+              <img src={slide.src} alt={slide.alt} draggable="false" />
+            </button>
           </article>
         ))}
       </div>
@@ -140,16 +89,14 @@ export default function BannerSlider({ onApply }) {
       </button>
 
       <div className="banner-dots">
-        {SLIDES.map((slide, i) => (
+        {BANNER_SLIDES.map((slide, i) => (
           <button
-            key={slide.id}
+            key={slide.src}
             type="button"
             className={i === index ? "active" : undefined}
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => goTo(i)}
-          >
-            {String(i + 1).padStart(2, "0")}
-          </button>
+          />
         ))}
       </div>
     </section>

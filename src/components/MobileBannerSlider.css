@@ -60,13 +60,3 @@
     display: none !important;
   }
 }
-
-@media (max-width: 900px) {
-  .mobile-banner {
-    display: block;
-  }
-
-  .banner-slider {
-    display: none;
-  }
-}
