@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import Header from "./components/Header.jsx";
 import DemoModal from "./components/DemoModal.jsx";
+import ComboApplyModal from "./components/ComboApplyModal.jsx";
 import LeadForm from "./components/LeadForm.jsx";
 import ProgramSection from "./components/ProgramSection.jsx";
 import SuccessStories from "./components/SuccessStories.jsx";
 import Button from "./components/Button.jsx";
 import BannerSlider from "./components/BannerSlider.jsx";
-import { WhatsAppIcon } from "./components/Icons.jsx";
+import MobileBannerSlider from "./components/MobileBannerSlider.jsx";
+import { WhatsAppIcon, TeamIcon } from "./components/Icons.jsx";
 import {
   BRANCHES,
   BRANCH_CARDS,
@@ -57,9 +59,17 @@ function CountUp({ target }) {
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
+  const [comboOpen, setComboOpen] = useState(false);
+  const [comboTitle, setComboTitle] = useState("");
 
   function openDemo() {
     setDemoOpen(true);
+    setMenuOpen(false);
+  }
+
+  function openCombo(title) {
+    setComboTitle(title);
+    setComboOpen(true);
     setMenuOpen(false);
   }
 
@@ -73,7 +83,10 @@ export default function App() {
       />
 
       <main id="top">
-        <BannerSlider onApply={openDemo} />
+        <div id="home">
+          <BannerSlider onApply={openDemo} />
+          <MobileBannerSlider />
+        </div>
 
         <section className="hero">
           <div className="container hero-grid">
@@ -172,7 +185,7 @@ export default function App() {
                 <article className="review-card">
                   <div className="stars">★★★★★</div>
                   <h4>Aman Joshi</h4>
-                  <p>“Flexible batches and EMI made it easy to join while in college.”</p>
+                  <p>“Flexible batches made it easy to join while in college.”</p>
                   <div className="g-badge">
                     <b>G</b> Google · 5 days ago
                   </div>
@@ -195,21 +208,34 @@ export default function App() {
 
         <section className="section section-alt" id="courses">
           <div className="container center">
-            <h2>Industry-Aligned IT Training Programs</h2>
+            <h2>Specialized Delivery Teams</h2>
             <p className="lead">
-              Best industrial training in Chandigarh and Mohali. Our courses come with 100% job
-              assurance. We will conduct your 5 interviews in top reputed companies.
+              Five focused teams covering design, engineering, commerce, and growth — so every project
+              moves from Figma to production with clear ownership.
             </p>
             <div className="course-grid">
-              {PROGRAMS.map((course) => (
-                <a className="course-card" href="#enquire" key={course.title}>
-                  <div className="course-art">
-                    <div className="blob" style={{ background: course.bg }}>
-                      {course.emoji}
+              {PROGRAMS.map((course, index) => (
+                <article className="course-card team-card" key={course.title}>
+                  <div className="team-top">
+                    <div className="team-icon">
+                      <TeamIcon name={course.icon} />
                     </div>
+                    <span className="team-count">{String(index + 1).padStart(2, "0")}</span>
                   </div>
                   <h3>{course.title}</h3>
-                </a>
+                  <p className="team-focus">{course.focus}</p>
+                  <p className="team-intro">{course.intro}</p>
+                  <div className="team-tools">
+                    {course.tools.map((tool) => (
+                      <span key={tool}>{tool}</span>
+                    ))}
+                  </div>
+                  <ul className="team-points">
+                    {course.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </article>
               ))}
             </div>
             <div className="course-actions">
@@ -230,10 +256,10 @@ export default function App() {
             </div>
             <div className="combo-benefits">
               <div className="benefit">
-                <div className="ico">💳</div>
+                <div className="ico">🎓</div>
                 <div>
-                  <strong>Easy EMI Available</strong>
-                  <p style={{ margin: 0, fontSize: 13, color: "#000" }}>Zero-cost, 12-month EMI.</p>
+                  <strong>Career Support</strong>
+                  <p style={{ margin: 0, fontSize: 13, color: "#000" }}>Mentorship and placement guidance.</p>
                 </div>
               </div>
               <div className="benefit">
@@ -266,7 +292,7 @@ export default function App() {
                     <a className="combo-link" href="#enquire">
                       View Combo Details →
                     </a>
-                    <Button type="button" className="full" onClick={openDemo}>
+                    <Button type="button" className="full" onClick={() => openCombo(combo.title)}>
                       Apply for This Combo
                     </Button>
                   </div>
@@ -294,50 +320,6 @@ export default function App() {
               <Button href="tel:+919317788822" variant="outline" className="btn-lg">
                 Claim Group Offer
               </Button>
-            </div>
-          </div>
-        </section>
-
-        <section className="section" id="emi">
-          <div className="container two-col">
-            <div>
-              <h2>Easy Payment Options for Career Programs</h2>
-              <p>
-                We offer flexible payment solutions to make career-focused learning more accessible. Our
-                EMI options are designed to support learners in planning their education without financial
-                pressure, while maintaining the same learning standards and program benefits.
-              </p>
-              <div className="hero-actions">
-                <Button href="#enquire">Check EMI Eligibility</Button>
-                <Button href="tel:+919317788822" variant="outline">
-                  Speak to a Program Advisor
-                </Button>
-              </div>
-            </div>
-            <div className="emi-card">
-              <div className="emi-visual">
-                <h3>Pay monthly. Start today.</h3>
-                <div className="emi-rows">
-                  <div>
-                    <span>Course fee</span>
-                    <strong>Split across 3–12 months</strong>
-                  </div>
-                  <div>
-                    <span>Zero-cost EMI</span>
-                    <strong>On selected programs</strong>
-                  </div>
-                  <div>
-                    <span>Approval</span>
-                    <strong>Same-day guidance</strong>
-                  </div>
-                </div>
-              </div>
-              <div className="emi-body">
-                <p style={{ margin: 0, color: "#000", fontSize: 14 }}>
-                  Share your course preference and our team will confirm EMI options for your branch and
-                  batch.
-                </p>
-              </div>
             </div>
           </div>
         </section>
@@ -548,7 +530,7 @@ export default function App() {
                 <div className="stars">★★★★★</div>
                 <p>
                   “I was unsure between digital marketing and web designing. The free demo and counselor
-                  helped me pick the right combo. EMI made the fee manageable.”
+                  helped me pick the right combo.”
                 </p>
                 <div className="person">
                   <img src="/student4.jpg" alt="" />
@@ -908,12 +890,6 @@ export default function App() {
         <div className="copy">Copyright © 2010-2026 Excellence technology. All Rights Reserved.</div>
       </footer>
 
-      <div className="sticky-rail">
-        <a href="https://wa.me/919317788822" target="_blank" rel="noreferrer" className="wa-btn">
-          WhatsApp
-        </a>
-        <a href="tel:9317788822">Phone</a>
-      </div>
       <a
         className="float-wa"
         href="https://wa.me/919317788822"
@@ -925,6 +901,11 @@ export default function App() {
       </a>
 
       <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} />
+      <ComboApplyModal
+        open={comboOpen}
+        comboTitle={comboTitle}
+        onClose={() => setComboOpen(false)}
+      />
     </>
   );
 }

@@ -57,18 +57,76 @@ export const CONTACT_BRANCHES = [
 ];
 
 export const PROGRAMS = [
-  { title: "Full-Stack Development", emoji: "💻", bg: "#f2f2f2" },
-  { title: "Artificial Intelligence", emoji: "🧠", bg: "#f2f2f2" },
-  { title: "Cyber Security", emoji: "🛡️", bg: "#f2f2f2" },
-  { title: "Data Analytics", emoji: "📊", bg: "#f2f2f2" },
-  { title: "Digital Marketing", emoji: "📣", bg: "#f2f2f2" },
-  { title: "Data Science", emoji: "📈", bg: "#f2f2f2" },
-  { title: "Graphic Designing", emoji: "🎨", bg: "#f2f2f2" },
-  { title: "Web Designing", emoji: "🖥️", bg: "#f2f2f2" },
-  { title: "DevOps", emoji: "⚙️", bg: "#f2f2f2" },
-  { title: "Software Testing", emoji: "🧪", bg: "#f2f2f2" },
-  { title: "Ethical Hacking", emoji: "🕵️", bg: "#f2f2f2" },
-  { title: "Cloud Computing", emoji: "☁️", bg: "#f2f2f2" },
+  {
+    title: "UI/UX Design Team",
+    focus: "Photoshop, Figma & UX Research",
+    emoji: "🎨",
+    bg: "#f2f2f2",
+    intro: "Intuitive interfaces, Photoshop assets, and production-ready Figma files for SaaS and e-commerce products.",
+    icon: "uiux",
+    tools: ["Photoshop", "Figma", "Wireframes"],
+    points: [
+      "Photoshop & Visual Design: high-fidelity UI mockups, banners, and marketing creatives.",
+      "Advanced Figma & Variables: component libraries and responsive auto-layout templates.",
+      "UX Research & Wireframing: complex user journey maps for multi-page products.",
+    ],
+  },
+  {
+    title: "Front-End Team",
+    focus: "React, Vue, Tailwind CSS",
+    emoji: "💻",
+    bg: "#f2f2f2",
+    intro: "High-speed UI code in React, Vue, and Tailwind CSS with a clean Figma-to-code workflow.",
+    icon: "frontend",
+    tools: ["React", "Vue", "Tailwind"],
+    points: [
+      "Figma-to-React Workflow: convert designs into optimized React components.",
+      "Modern UI Frameworks: reusable Vue and React components with Tailwind CSS.",
+      "Core Web Vitals Optimization: faster pages, lighter assets, lower bounce rates.",
+    ],
+  },
+  {
+    title: "Back-End Team",
+    focus: "Laravel & Node.js Experts",
+    emoji: "⚙️",
+    bg: "#f2f2f2",
+    intro: "Custom Laravel solutions and Node.js APIs built for scale, security, and real-time use.",
+    icon: "backend",
+    tools: ["Laravel", "Node.js", "SQL"],
+    points: [
+      "Advanced Laravel Architectures: packages, repository patterns, event-driven design.",
+      "Scalable APIs with Node.js: microservices architecture and real-time sockets.",
+      "Database Optimization: SQL query caching and indexing for MySQL and related databases.",
+    ],
+  },
+  {
+    title: "CMS & E-commerce Team",
+    focus: "Shopify, WordPress, Wix & Squarespace",
+    emoji: "🛍️",
+    bg: "#f2f2f2",
+    intro: "High-performance storefronts and custom sites on Shopify, WordPress, Wix, and Squarespace.",
+    icon: "commerce",
+    tools: ["Shopify", "WordPress", "Wix", "Squarespace"],
+    points: [
+      "Shopify Liquid & Hydrogen: custom theme setups and headless Shopify commerce.",
+      "WordPress Builds: custom themes, plugins, and content-driven websites.",
+      "Wix & Squarespace: polished marketing sites and storefronts for faster go-live.",
+    ],
+  },
+  {
+    title: "Digital Marketing & SEO Team",
+    focus: "Traffic, CRO & Growth",
+    emoji: "📈",
+    bg: "#f2f2f2",
+    intro: "Marketing systems that grow client traffic, conversions, and revenue.",
+    icon: "marketing",
+    tools: ["SEO", "CRO", "Schema", "AI Content"],
+    points: [
+      "Technical SEO Mastery: site architecture, schema markup, and programmatic SEO.",
+      "Conversion Rate Optimization: A/B testing with tools like Hotjar and Optimizely.",
+      "AI in Marketing: SEO content, programmatic keywords, and ad-copy execution.",
+    ],
+  },
 ];
 
 export const COMBOS = [
