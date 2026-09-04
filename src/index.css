@@ -258,6 +258,11 @@ p {
 
 /* Top bar */
 .topbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
   background: var(--blue);
   color: #fff;
   text-align: center;
@@ -266,10 +271,20 @@ p {
   font-weight: 500;
 }
 
+.topbar-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
 .topbar a {
   color: var(--white);
   font-weight: 700;
-  margin-left: 8px;
+  text-decoration: none;
+}
+
+.topbar a:hover {
+  text-decoration: underline;
 }
 
 /* Header */

@@ -48,7 +48,8 @@ export default function Header({ menuOpen, onToggleMenu, onOpenDemo, onCloseMenu
   return (
     <>
       <div className="topbar">
-        100% Practical Training. Real Projects. AI-Powered Skills. Job-Ready Career.
+        <span>100% Practical Training. Real Projects. AI-Powered Skills. Job-Ready Career.</span>
+        <span className="topbar-divider" aria-hidden="true" />
         <a
           href="#demo"
           onClick={(event) => {
@@ -56,8 +57,10 @@ export default function Header({ menuOpen, onToggleMenu, onOpenDemo, onCloseMenu
             onOpenDemo();
           }}
         >
-          Book Free Demo Now
+          Book Now Free Demo
         </a>
+        <span className="topbar-divider" aria-hidden="true" />
+        <a href="tel:+919218000707">Call Us +91 92180 00707</a>
       </div>
 
       <header className="header">

@@ -9,6 +9,7 @@ import Button from "./components/Button.jsx";
 import BannerSlider from "./components/BannerSlider.jsx";
 import TrustedMarquee from "./components/TrustedMarquee.jsx";
 import CourseGrid from "./components/CourseGrid.jsx";
+import PlacementSection from "./components/PlacementSection.jsx";
 import { WhatsAppIcon } from "./components/Icons.jsx";
 import {
   BRANCHES,
@@ -141,6 +142,8 @@ export default function App() {
         <TrustedMarquee />
 
         <CourseGrid onOpenDemo={openDemo} />
+
+        <PlacementSection />
 
         <section className="cta-strip">
           <div className="container cta-strip-inner">
