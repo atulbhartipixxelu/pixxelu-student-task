@@ -258,17 +258,33 @@ p {
 
 /* Top bar */
 .topbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  overflow: hidden;
   background: var(--blue);
   color: #fff;
   text-align: center;
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
+}
+
+.topbar-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.topbar-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.topbar-group[aria-hidden="true"] {
+  display: none;
 }
 
 .topbar-divider {
@@ -285,6 +301,15 @@ p {
 
 .topbar a:hover {
   text-decoration: underline;
+}
+
+@keyframes topbar-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* Header */
@@ -556,6 +581,10 @@ p {
   line-height: 14px;
 }
 
+.header-demo-icon {
+  display: none;
+}
+
 .phone-link {
   display: inline-flex;
   align-items: center;
@@ -646,9 +675,10 @@ p {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 460px;
+  height: auto;
+  aspect-ratio: 1;
   object-fit: cover;
-  object-position: center 28%;
+  object-position: center;
   border-radius: 22px;
   display: block;
 }
@@ -673,7 +703,7 @@ p {
   color: var(--black);
   margin: 0 0 18px;
   line-height: 1.18;
-  max-width: 18ch;
+  max-width: 16ch;
 }
 
 .about-copy > p {
@@ -781,7 +811,8 @@ p {
   }
 
   .about-visual img {
-    height: 340px;
+    height: auto;
+    aspect-ratio: 1;
   }
 
   .about-copy h1 {
@@ -795,7 +826,8 @@ p {
 
 @media (max-width: 640px) {
   .about-visual img {
-    height: 240px;
+    height: auto;
+    aspect-ratio: 1;
     border-radius: 16px;
   }
 
@@ -1982,25 +2014,97 @@ details.faq-item p {
     display: none;
   }
 
-  .menu-toggle {
-    display: block;
-  }
-
-  .header-cta .phone-link .phone-num {
-    display: none;
-  }
-
-  .header-cta .phone-link {
-    width: 40px;
-    padding: 0;
-  }
-
   .mega {
     min-width: 0;
   }
 }
 
 @media (max-width: 900px) {
+  .header-inner {
+    gap: 8px;
+  }
+
+  .header-brand {
+    flex: 1;
+    min-width: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .header-divider {
+    display: block;
+    height: 24px;
+  }
+
+  .header-tagline,
+  .header-tagline-city,
+  .ai-letters {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    font-size: 10px;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+  }
+
+  .ai-letters {
+    font-weight: 800;
+  }
+
+  .header-tagline-top {
+    flex-wrap: nowrap;
+    gap: 3px;
+  }
+
+  .ai-spark,
+  .ai-spark svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .header-cta {
+    flex-shrink: 0;
+    gap: 8px;
+  }
+
+  .header-cta .pixxelu_button {
+    display: none;
+  }
+
+  .header-demo-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+
+  .header-wa-icon {
+    background: #25d366;
+  }
+
+  .header-demo-icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .header-demo-icon:hover {
+    background: #000;
+    color: #fff;
+  }
+
+  .header-wa-icon:hover {
+    background: #1ebe57;
+  }
   .container,
   .footer-float {
     width: calc(100% - 32px);
@@ -2086,6 +2190,27 @@ details.faq-item p {
     padding: 8px 28px;
     font-size: 14px;
   }
+
+  .topbar {
+    padding: 8px 0;
+    font-size: 12px;
+  }
+
+  .topbar-track {
+    display: flex;
+    width: max-content;
+    justify-content: flex-start;
+    gap: 0;
+    animation: topbar-scroll 22s linear infinite;
+  }
+
+  .topbar-group {
+    padding-right: 40px;
+  }
+
+  .topbar-group[aria-hidden="true"] {
+    display: flex;
+  }
 }
 
 @media (max-width: 640px) {
@@ -2121,26 +2246,34 @@ details.faq-item p {
   }
 
   .logo img {
-    height: 26px;
+    height: 24px;
     width: auto;
   }
 
-  .header-tagline {
-    font-size: 10px;
+  .header-demo-icon {
+    width: 36px;
+    height: 36px;
   }
 
+  .header-demo-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .header-cta {
+    gap: 6px;
+  }
+
+  .header-tagline,
+  .header-tagline-city,
   .ai-letters {
-    font-size: 13px;
+    font-size: 9px;
   }
 
   .ai-spark,
   .ai-spark svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .topbar {
-    font-size: 12px;
+    width: 9px;
+    height: 9px;
   }
 
   .hero h1 {

@@ -17,22 +17,15 @@ import { WhatsAppIcon } from "./components/Icons.jsx";
 import { COURSE_CARDS } from "./data.js";
 
 export default function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
 
   function openDemo() {
     setDemoOpen(true);
-    setMenuOpen(false);
   }
 
   return (
     <>
-      <Header
-        menuOpen={menuOpen}
-        onToggleMenu={() => setMenuOpen((open) => !open)}
-        onCloseMenu={() => setMenuOpen(false)}
-        onOpenDemo={openDemo}
-      />
+      <Header onOpenDemo={openDemo} />
 
       <main id="top">
         <div id="home">
@@ -44,23 +37,27 @@ export default function App() {
           <div className="container">
             <div className="hero-grid">
               <div className="about-visual">
-                <img src="/classroom.jpg" alt="Students learning together at Pixxelu Academy" />
+                <img
+                  src="/about.jpg"
+                  alt="Students and mentors at Pixxelu Academy in Dharamshala — campus life, classroom batches, and certified learners"
+                />
               </div>
 
               <div className="about-copy">
                 <p className="about-kicker">About Us</p>
-                <h1>Pixxelu Academy — AI-powered classroom training in Dharamshala</h1>
+                <h1>Learn in the classroom. Build for the industry. Grow in Dharamshala.</h1>
                 <p>
-                  We are a classroom-first IT academy helping students become job-ready with
-                  AI-powered skills, live projects, and placement support.
+                  <strong>Pixxelu Academy</strong> is a classroom-first IT institute helping students become
+                  job-ready with <strong>mentor-led training</strong>, live projects, and placement support —
+                  not slide-only theory.
                 </p>
                 <p>
-                  Our programs cover the tools used in real product teams — from{" "}
-                  <strong>Figma, React, Shopify, and Node.js</strong> to digital marketing — so you
-                  learn by building, not by watching slides.
+                  From <strong>UI/UX, web development, and graphic design</strong> to digital marketing, every
+                  program is built around real work, certification, and a campus community that celebrates
+                  every project and every career win.
                 </p>
                 <Button type="button" onClick={openDemo}>
-                  Free Book Demo
+                  Book Free Demo
                 </Button>
               </div>
             </div>
