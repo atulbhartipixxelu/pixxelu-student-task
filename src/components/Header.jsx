@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Button from "./Button.jsx";
-import { WhatsAppIcon } from "./Icons.jsx";
 
 const LINKS = [
   { href: "#courses", label: "Course" },
@@ -123,28 +122,17 @@ export default function Header({ onOpenDemo }) {
             <Button type="button" onClick={onOpenDemo}>
               Free Demo
             </Button>
-            <a
-              className="header-demo-icon header-wa-icon"
-              href="https://wa.me/919218000707"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Chat on WhatsApp"
-            >
-              <WhatsAppIcon size={20} />
-            </a>
-            <button
-              className="header-demo-icon"
-              type="button"
-              onClick={onOpenDemo}
-              aria-label="Free Demo"
-            >
+            <a className="header-phone" href="tel:+919218000707">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="3.2" y="5" width="17.6" height="15" rx="2.4" stroke="currentColor" strokeWidth="1.8" />
-                <path d="M3.2 9.2h17.6" stroke="currentColor" strokeWidth="1.8" />
-                <path d="M8 3.6v3.4M16 3.6v3.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                <path d="M10.2 14.2 15 16.6l-4.8 2.4v-4.8Z" fill="currentColor" />
+                <path
+                  d="M7.4 3.8h2.7l1.1 3.2-1.7 1.2a12.4 12.4 0 0 0 6.3 6.3l1.2-1.7 3.2 1.1v2.7c0 .7-.6 1.3-1.3 1.3C10.8 18 6 13.2 6 7.1c0-.8.6-1.3 1.4-1.3Z"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinejoin="round"
+                />
               </svg>
-            </button>
+              <span>92180 00707</span>
+            </a>
           </div>
         </div>
       </header>

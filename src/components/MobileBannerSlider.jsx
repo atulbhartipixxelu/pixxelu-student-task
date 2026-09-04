@@ -3,16 +3,8 @@ import "./MobileBannerSlider.css";
 
 const SLIDES = [
   {
-    src: "/mobile-banners/ui-ux-design.jpg",
-    alt: "UI/UX Designer 6-month offline program",
-  },
-  {
-    src: "/mobile-banners/ai-web-design.jpg",
-    alt: "AI-Powered Web Design",
-  },
-  {
-    src: "/mobile-banners/graphic-design.jpg",
-    alt: "Graphic Design course",
+    src: "/mobile-banners/banner-01.jpg",
+    alt: "UI/UX Designer 6-month offline program at Pixxelu Academy",
   },
 ];
 
@@ -20,23 +12,26 @@ export default function MobileBannerSlider() {
   const [index, setIndex] = useState(0);
   const paused = useRef(false);
   const startX = useRef(0);
+  const many = SLIDES.length > 1;
 
   const goTo = useCallback((next) => {
     setIndex((next + SLIDES.length) % SLIDES.length);
   }, []);
 
   useEffect(() => {
+    if (!many) return undefined;
     const id = setInterval(() => {
       if (!paused.current) setIndex((current) => (current + 1) % SLIDES.length);
     }, 5000);
     return () => clearInterval(id);
-  }, []);
+  }, [many]);
 
   function onPointerDown(event) {
     startX.current = event.clientX;
   }
 
   function onPointerUp(event) {
+    if (!many) return;
     const delta = event.clientX - startX.current;
     if (delta > 50) goTo(index - 1);
     else if (delta < -50) goTo(index + 1);
@@ -62,17 +57,19 @@ export default function MobileBannerSlider() {
           </article>
         ))}
       </div>
-      <div className="mobile-dots">
-        {SLIDES.map((slide, i) => (
-          <button
-            key={slide.src}
-            type="button"
-            className={i === index ? "active" : undefined}
-            aria-label={`Go to slide ${i + 1}`}
-            onClick={() => goTo(i)}
-          />
-        ))}
-      </div>
+      {many ? (
+        <div className="mobile-dots">
+          {SLIDES.map((slide, i) => (
+            <button
+              key={slide.src}
+              type="button"
+              className={i === index ? "active" : undefined}
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => goTo(i)}
+            />
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }
