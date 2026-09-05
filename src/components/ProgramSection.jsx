@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./Button.jsx";
+import CourseSelect from "./CourseSelect.jsx";
 import { WhatsAppIcon } from "./Icons.jsx";
-import { DEMO_COURSES } from "../data.js";
 
 const PROGRAM_LOGOS = [
   { name: "Semrush", file: "semrush.svg" },
@@ -96,20 +96,15 @@ function ApplyForm() {
           />
           <small className="form-error">Enter a valid email.</small>
         </label>
-        <label className={`field full${errors.course ? " invalid" : ""}`}>
+        <div className={`field full${errors.course ? " invalid" : ""}`}>
           <span>Course</span>
-          <select
-            name="course"
+          <CourseSelect
             value={values.course}
-            onChange={(e) => update("course", e.target.value)}
-          >
-            <option value="">--Select Course--</option>
-            {DEMO_COURSES.map((item) => (
-              <option key={item}>{item}</option>
-            ))}
-          </select>
+            invalid={errors.course}
+            onChange={(course) => update("course", course)}
+          />
           <small className="form-error">Please select a course.</small>
-        </label>
+        </div>
         <Button type="submit" className="full">
           Book Now
         </Button>
@@ -126,7 +121,8 @@ export default function ProgramSection() {
         <div className="program-info">
           <span className="program-kicker">AI-Powered 3-Month Classroom Program</span>
           <h2>
-            Learn Digital Marketing with <em>AI-powered skills</em>
+            Learn Digital Marketing with{" "}
+            <em>AI-powered 3-Month Training</em>
           </h2>
           <p className="program-copy">
             A practical 3-month course in SEO, Google Ads, Meta Ads, content and analytics — built

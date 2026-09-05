@@ -6,11 +6,8 @@ const PLACEMENTS = [
   { file: "02.jpg", name: "Samriti Chaudhary", role: "Jr. UI/UX Designer" },
   { file: "03.jpg", name: "Daman Chaudhary", role: "Jr. PHP Developer" },
   { file: "04.jpg", name: "Gaurav", role: "Jr. UI/UX Designer" },
-  { file: "05.jpg", name: "Gaurav", role: "Jr. UI/UX Designer" },
   { file: "06.jpg", name: "Rahul Chaudhary", role: "Jr. PHP Developer" },
   { file: "07.jpg", name: "Riya Chaudhary", role: "Jr. UI/UX Designer" },
-  { file: "08.jpg", name: "Daman Chaudhary", role: "Jr. PHP Developer" },
-  { file: "09.jpg", name: "Samriti Chaudhary", role: "Jr. UI/UX Designer" },
 ];
 
 export default function PlacementSection() {

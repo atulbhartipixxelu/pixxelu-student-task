@@ -29,13 +29,14 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: 999px;
   background: #fff0eb;
   color: #333;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.45;
+  white-space: nowrap;
 }
 
 .industrial-grid {
@@ -107,6 +108,11 @@
 @media (max-width: 640px) {
   .industrial {
     padding: 52px 0 56px;
+  }
+
+  .industrial-audience {
+    font-size: 11px;
+    padding: 8px 12px;
   }
 
   .industrial-tools {

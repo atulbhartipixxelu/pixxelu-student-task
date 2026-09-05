@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "./Button.jsx";
+import CourseSelect from "./CourseSelect.jsx";
 
 function isValidPhone(value) {
   return /^\d{10}$/.test(
@@ -94,20 +95,15 @@ export default function LeadForm({
         </label>
       )}
       {fields.includes("course") && (
-        <label className={`field${errors.course ? " invalid" : ""}`}>
+        <div className={`field${errors.course ? " invalid" : ""}`}>
           <span>Course</span>
-          <select
-            name="course"
+          <CourseSelect
             value={values.course || ""}
-            onChange={(e) => update("course", e.target.value)}
-          >
-            <option value="">--Select Course--</option>
-            {courseOptions.map((item) => (
-              <option key={item}>{item}</option>
-            ))}
-          </select>
+            invalid={errors.course}
+            onChange={(course) => update("course", course)}
+          />
           <small className="form-error">Please select a course.</small>
-        </label>
+        </div>
       )}
       {fields.includes("branch") && (
         <label className={`field${errors.branch ? " invalid" : ""}${className === "form-card" ? " full" : ""}`}>

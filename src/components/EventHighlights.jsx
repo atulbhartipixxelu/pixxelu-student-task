@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./EventHighlights.css";
 
 function youtubeSrc(id) {
@@ -17,11 +18,15 @@ function youtubeSrc(id) {
   return `https://www.youtube-nocookie.com/embed/${id}?${params.toString()}`;
 }
 
-const PHOTOS = Array.from({ length: 59 }, (_, index) => ({
-  type: "image",
-  src: `/events/event-${String(index + 1).padStart(2, "0")}.jpg`,
-  alt: `Pixxelu Academy campus ${index + 1}`,
-}));
+const MISSING_PHOTOS = new Set([1, 2, 3, 4, 5]);
+
+const PHOTOS = Array.from({ length: 59 }, (_, index) => index + 1)
+  .filter((n) => !MISSING_PHOTOS.has(n))
+  .map((n) => ({
+    type: "image",
+    src: `/events/event-${String(n).padStart(2, "0")}.jpg`,
+    alt: `Pixxelu Academy campus ${n}`,
+  }));
 
 function withVideos(photos, videos) {
   const items = [...photos];
@@ -36,6 +41,8 @@ const ROW_LEFT = withVideos(PHOTOS.slice(0, 30), ["TwXIA6Jiy5I", "V6PGuiPLkRs"])
 const ROW_RIGHT = withVideos(PHOTOS.slice(30), ["yqdUQg0fiCk"]);
 
 function MediaCard({ item, copy }) {
+  const [hidden, setHidden] = useState(false);
+
   if (item.type === "video") {
     return (
       <article className="event-card event-card-video">
@@ -50,9 +57,15 @@ function MediaCard({ item, copy }) {
     );
   }
 
+  if (hidden) return null;
+
   return (
     <article className="event-card">
-      <img src={item.src} alt={copy === 0 ? item.alt : ""} />
+      <img
+        src={item.src}
+        alt={copy === 0 ? item.alt : ""}
+        onError={() => setHidden(true)}
+      />
     </article>
   );
 }

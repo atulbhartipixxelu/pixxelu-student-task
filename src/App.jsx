@@ -13,7 +13,14 @@ import VideoTestimonials from "./components/VideoTestimonials.jsx";
 import GoogleReviews from "./components/GoogleReviews.jsx";
 import EventHighlights from "./components/EventHighlights.jsx";
 import EnquireSection from "./components/EnquireSection.jsx";
-import { WhatsAppIcon } from "./components/Icons.jsx";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LocationIcon,
+  PhoneIcon,
+  WhatsAppIcon,
+  YouTubeIcon,
+} from "./components/Icons.jsx";
 import { COURSE_CARDS } from "./data.js";
 
 export default function App() {
@@ -119,51 +126,55 @@ export default function App() {
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">
-            <div>
+            <div className="footer-about">
+              <a className="footer-logo" href="#home">
+                <img src="/footer-logo.png" alt="Pixxelu Digital Technology" />
+              </a>
               <h4>About Us</h4>
               <p>
-                Excellence Technology provides practical, career-focused technology training, industrial
-                training and project-based internship programs in Chandigarh and Mohali. Open Monday to
-                Saturday, 9:00 AM – 6:30 PM.
+                <strong>Pixxelu Academy</strong> is a classroom-first IT institute in Dharamshala.
+                We train students in UI/UX, web development, graphic design and digital marketing
+                with live projects, certification and placement support.
               </p>
-              <p>
-                Email: <a href="mailto:info@excellencetechnology.in">info@excellencetechnology.in</a>
-              </p>
+              <p>Monday to Saturday · 9:00 AM – 6:30 PM</p>
               <div className="socials">
-                <a href="https://www.facebook.com/excellence.technology22" target="_blank" rel="noreferrer">
-                  f
-                </a>
-                <a href="https://www.instagram.com/excellence.technology/" target="_blank" rel="noreferrer">
-                  ig
-                </a>
                 <a
-                  href="https://www.linkedin.com/company/excellence-technology"
+                  className="social-facebook"
+                  href="https://www.facebook.com/pixxeludigitaltechnology/"
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="Facebook"
                 >
-                  in
+                  <FacebookIcon />
                 </a>
-                <a href="https://www.youtube.com/ExcellenceTechnology" target="_blank" rel="noreferrer">
-                  yt
+                <a
+                  className="social-instagram"
+                  href="https://www.instagram.com/pixxeludigitaltechnology/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                >
+                  <InstagramIcon />
+                </a>
+                <a
+                  className="social-youtube"
+                  href="https://www.youtube.com/@PixxeluDigitalTechnology"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="YouTube"
+                >
+                  <YouTubeIcon />
+                </a>
+                <a
+                  className="social-whatsapp"
+                  href="https://wa.me/919218000707"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="WhatsApp"
+                >
+                  <WhatsAppIcon size={18} />
                 </a>
               </div>
-            </div>
-            <div>
-              <h4>Contact Information</h4>
-              <ul className="footer-contact">
-                <li>
-                  <strong>Location</strong>
-                  Building 256, Kachari Adda, Chilgari, Dharamshala, Himachal Pradesh 176215
-                </li>
-                <li>
-                  <strong>Email</strong>
-                  <a href="mailto:info@excellencetechnology.in">info@excellencetechnology.in</a>
-                </li>
-                <li>
-                  <strong>Phone</strong>
-                  <a href="tel:+919317788822">+91 93177-88822</a>
-                </li>
-              </ul>
             </div>
             <div>
               <h4>Popular Course</h4>
@@ -195,42 +206,67 @@ export default function App() {
                 </li>
               </ul>
             </div>
+            <div>
+              <h4>Trending Courses</h4>
+              <ul>
+                <li>
+                  <a href="#courses">Full Stack Web Development</a>
+                </li>
+                <li>
+                  <a href="#courses">UI/UX Design</a>
+                </li>
+                <li>
+                  <a href="#courses">Digital Marketing</a>
+                </li>
+                <li>
+                  <a href="#courses">Graphic Designing</a>
+                </li>
+                <li>
+                  <a href="#courses">Web Development</a>
+                </li>
+                <li>
+                  <a href="#courses">React JS</a>
+                </li>
+                <li>
+                  <a href="#industrial">Industrial Training</a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="footer-links">
-            <h4>Trending Courses</h4>
-            <div className="link-row">
-              <a href="#courses">Full Stack Web Development</a>
-              <a href="#courses">Python</a>
-              <a href="#courses">Machine Learning</a>
-              <a href="#courses">Data Science</a>
-              <a href="#courses">Java</a>
-              <a href="#courses">React JS</a>
-              <a href="#courses">Angular JS</a>
-              <a href="#courses">Node JS</a>
-              <a href="#courses">Java Script</a>
-              <a href="#courses">Flutter</a>
-              <a href="#courses">Android</a>
-            </div>
-            <h4>Skill Based Courses</h4>
-            <div className="link-row">
-              <a href="#courses">Graphic Designing</a>
-              <a href="#courses">Web Designing</a>
-              <a href="#courses">SEO</a>
-              <a href="#courses">Software Testing</a>
-              <a href="#courses">Cloud Computing</a>
-              <a href="#courses">DevOps</a>
-            </div>
-            <h4>Quick Links</h4>
-            <div className="link-row">
-              <a href="#enquire">Contact Us</a>
-            </div>
+          <div className="footer-contact-bar">
+            <h4>Contact Information</h4>
+            <ul className="footer-contact">
+              <li>
+                <span className="footer-ico footer-ico-location" aria-hidden="true">
+                  <LocationIcon size={20} />
+                </span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Building+256+Kachari+Adda+Chilgari+Dharamshala+176215"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Building 256, Kachari Adda, Chilgari, Dharamshala, Himachal Pradesh 176215
+                </a>
+              </li>
+              <li>
+                <span className="footer-ico footer-ico-phone" aria-hidden="true">
+                  <PhoneIcon size={18} />
+                </span>
+                <a href="tel:+919218000707">+91 92180 00707</a>
+              </li>
+              <li>
+                <span className="footer-ico footer-ico-whatsapp" aria-hidden="true">
+                  <WhatsAppIcon size={18} />
+                </span>
+                <a href="https://wa.me/919218000707" target="_blank" rel="noreferrer">
+                  +91 92180 00707
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="copy">
-          <p className="footer-address">
-            Building 256, Kachari Adda, Chilgari, Dharamshala, Himachal Pradesh 176215
-          </p>
-          Copyright © 2010-2026 Excellence technology. All Rights Reserved.
+          Copyright © 2026 Pixxelu Academy. All Rights Reserved.
         </div>
       </footer>
 

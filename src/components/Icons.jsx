@@ -101,6 +101,47 @@ export function CalendarIcon({ size = 22 }) {
   );
 }
 
+export function LocationIcon({ size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2.2c-3.7 0-6.7 3-6.7 6.7 0 5 6.7 12.9 6.7 12.9s6.7-7.9 6.7-12.9c0-3.7-3-6.7-6.7-6.7Zm0 9.1a2.4 2.4 0 1 1 0-4.8 2.4 2.4 0 0 1 0 4.8Z" />
+    </svg>
+  );
+}
+
+export function PhoneIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M8.2 3.6c.3-.3.8-.4 1.2-.2l2.2 1c.4.2.7.6.7 1.1l-.2 2.3c0 .3-.2.6-.4.8l-1.1 1.1a12.2 12.2 0 0 0 5.7 5.7l1.1-1.1c.2-.2.5-.4.8-.4l2.3-.2c.5 0 .9.3 1.1.7l1 2.2c.2.4.1.9-.2 1.2l-1.5 1.5c-.4.4-1 .6-1.6.5-3.3-.5-6.4-2.3-8.8-4.7S4.6 9.9 4.1 6.6c-.1-.6.1-1.2.5-1.6L8.2 3.6Z" />
+    </svg>
+  );
+}
+
+export function YouTubeIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8ZM9.8 15.6V8.4L15.8 12l-6 3.6Z" />
+    </svg>
+  );
+}
+
+export function InstagramIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 7.2A4.8 4.8 0 1 0 16.8 12 4.8 4.8 0 0 0 12 7.2Zm0 7.9A3.1 3.1 0 1 1 15.1 12 3.1 3.1 0 0 1 12 15.1ZM17 6.9a1.1 1.1 0 1 0 1.1 1.1A1.1 1.1 0 0 0 17 6.9Z" />
+      <path d="M12 4.4c2.7 0 3 0 4.1.1a4 4 0 0 1 2.7 1.5 4 4 0 0 1 .7 2.3c.1 1.1.1 1.4.1 4.1s0 3-.1 4.1a4 4 0 0 1-1.5 2.7 4 4 0 0 1-2.3.7c-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1a4 4 0 0 1-2.7-1.5 4 4 0 0 1-.7-2.3C4.4 15 4.4 14.7 4.4 12s0-3 .1-4.1a4 4 0 0 1 1.5-2.7 4 4 0 0 1 2.3-.7C9 4.4 9.3 4.4 12 4.4Zm0-1.8c-2.7 0-3.1 0-4.2.1A5.8 5.8 0 0 0 3.9 4 5.8 5.8 0 0 0 2.7 7.8C2.6 8.9 2.6 9.3 2.6 12s0 3.1.1 4.2A5.8 5.8 0 0 0 4 20.1a5.8 5.8 0 0 0 3.8 1.2c1.1.1 1.5.1 4.2.1s3.1 0 4.2-.1A5.8 5.8 0 0 0 20.1 20a5.8 5.8 0 0 0 1.2-3.8c.1-1.1.1-1.5.1-4.2s0-3.1-.1-4.2A5.8 5.8 0 0 0 20 3.9 5.8 5.8 0 0 0 16.2 2.7C15.1 2.6 14.7 2.6 12 2.6Z" />
+    </svg>
+  );
+}
+
+export function FacebookIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M14.4 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H8.2v3.2h2.8V22h3.4Z" />
+    </svg>
+  );
+}
+
 export function ArrowIcon({ size = 14 }) {
   return (
     <svg

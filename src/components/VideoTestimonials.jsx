@@ -49,35 +49,18 @@ function PauseIcon() {
   );
 }
 
-function MuteIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M4 9h4l5-4v14l-5-4H4V9Zm12.5 1.1 1.4-1.4 1.4 1.4 1.4-1.4 1.4 1.4-1.4 1.4 1.4 1.4-1.4 1.4-1.4-1.4-1.4 1.4-1.4-1.4 1.4-1.4-1.4-1.4Z"
-      />
-    </svg>
-  );
-}
-
-function VolumeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M4 9h4l5-4v14l-5-4H4V9Zm11.5 1.1a3.2 3.2 0 0 1 0 3.8l-1.3-1.1a1.6 1.6 0 0 0 0-1.6l1.3-1.1Zm2.3-2.4a6.2 6.2 0 0 1 0 8.6l-1.3-1.1a4.5 4.5 0 0 0 0-6.4l1.3-1.1Z"
-      />
-    </svg>
-  );
+function startAutoplay(player) {
+  if (!player?.playVideo) return;
+  player.unMute?.();
+  player.setVolume?.(100);
+  player.playVideo();
 }
 
 function TestimonialPlayer({ id, title, active, onPlay }) {
   const wrapRef = useRef(null);
   const playerRef = useRef(null);
-  const activeRef = useRef(active);
-  const [playing, setPlaying] = useState(active);
-  const [muted, setMuted] = useState(true);
-  activeRef.current = active;
+  const [ready, setReady] = useState(false);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -92,12 +75,11 @@ function TestimonialPlayer({ id, title, active, onPlay }) {
 
       playerRef.current = new YT.Player(host, {
         videoId: id,
-        host: "https://www.youtube-nocookie.com",
         width: "100%",
         height: "100%",
         playerVars: {
           autoplay: 0,
-          mute: 1,
+          mute: 0,
           controls: 0,
           disablekb: 1,
           fs: 0,
@@ -111,9 +93,8 @@ function TestimonialPlayer({ id, title, active, onPlay }) {
           origin: window.location.origin,
         },
         events: {
-          onReady(event) {
-            event.target.mute();
-            if (activeRef.current) event.target.playVideo();
+          onReady() {
+            setReady(true);
           },
           onStateChange(event) {
             setPlaying(event.data === YT.PlayerState.PLAYING);
@@ -132,11 +113,19 @@ function TestimonialPlayer({ id, title, active, onPlay }) {
   }, [id]);
 
   useEffect(() => {
+    if (!ready) return undefined;
     const player = playerRef.current;
-    if (!player?.playVideo) return;
-    if (active) player.playVideo();
-    else player.pauseVideo();
-  }, [active]);
+    if (!player?.playVideo) return undefined;
+
+    if (active) {
+      startAutoplay(player);
+      const retry = window.setTimeout(() => startAutoplay(player), 400);
+      return () => window.clearTimeout(retry);
+    }
+
+    player.pauseVideo();
+    return undefined;
+  }, [active, ready]);
 
   function togglePlay() {
     const player = playerRef.current;
@@ -146,38 +135,19 @@ function TestimonialPlayer({ id, title, active, onPlay }) {
       return;
     }
     onPlay();
-    player.playVideo();
-  }
-
-  function toggleMute() {
-    const player = playerRef.current;
-    if (!player?.isMuted) return;
-    if (player.isMuted()) {
-      player.unMute();
-      setMuted(false);
-    } else {
-      player.mute();
-      setMuted(true);
-    }
+    startAutoplay(player);
   }
 
   return (
     <div className="vt-frame">
       <div className="vt-player" ref={wrapRef} title={title} />
-      {!playing ? (
-        <img
-          className="vt-poster"
-          src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
-          alt=""
-        />
+      {!playing && !active ? (
+        <img className="vt-poster" src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" />
       ) : null}
       <div className="vt-shield" aria-hidden="true" />
       <div className="vt-controls">
         <button type="button" onClick={togglePlay} aria-label={playing ? "Pause video" : "Play video"}>
           {playing ? <PauseIcon /> : <PlayIcon />}
-        </button>
-        <button type="button" onClick={toggleMute} aria-label={muted ? "Unmute video" : "Mute video"}>
-          {muted ? <MuteIcon /> : <VolumeIcon />}
         </button>
       </div>
     </div>
@@ -185,8 +155,33 @@ function TestimonialPlayer({ id, title, active, onPlay }) {
 }
 
 export default function VideoTestimonials() {
+  const sectionRef = useRef(null);
+  const [inView, setInView] = useState(false);
   const [index, setIndex] = useState(0);
   const [activeId, setActiveId] = useState(VIDEOS[0].id);
+
+  useEffect(() => {
+    function update() {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const box = section.getBoundingClientRect();
+      const next = document.getElementById("placements")?.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const sectionVisible = box.top < vh * 0.72 && box.bottom > vh * 0.28;
+      const nextReached = Boolean(next && next.top < vh * 0.38);
+
+      setInView(sectionVisible && !nextReached);
+    }
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   useEffect(() => {
     setActiveId(VIDEOS[index].id);
@@ -201,7 +196,7 @@ export default function VideoTestimonials() {
   }
 
   return (
-    <section className="video-testimonials" id="video-stories">
+    <section className="video-testimonials" id="video-stories" ref={sectionRef}>
       <div className="container">
         <div className="vt-head">
           <p className="about-kicker">Student Stories</p>
@@ -225,7 +220,7 @@ export default function VideoTestimonials() {
                     <TestimonialPlayer
                       id={video.id}
                       title={`${video.name} — ${video.course} at Pixxelu Academy`}
-                      active={activeId === video.id}
+                      active={inView && activeId === video.id}
                       onPlay={() => setActiveId(video.id)}
                     />
                     <div className="vt-meta">

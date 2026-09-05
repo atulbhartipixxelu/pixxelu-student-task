@@ -30,7 +30,7 @@ export default function IndustrialTraining({ onOpenDemo }) {
           <h2>Industrial Training Programs</h2>
           <p className="industrial-script">Learn Today, Build Tomorrow</p>
           <p className="industrial-audience">
-            For BCA, MCA, CSC, Computer Science, B.Tech &amp; Other IT/CS Students
+            BCA, MCA, BSCIT, BTech (CSE) & Polytechnic Course (CSE)
           </p>
         </div>
 

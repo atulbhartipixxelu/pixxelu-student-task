@@ -194,9 +194,7 @@
   }
 
   .placement-seal {
-    width: 120px;
-    height: auto;
-    margin-bottom: 8px;
+    display: none;
   }
 
   .placement-intro span {

@@ -1,38 +1,22 @@
-export const COURSES = [
-  "1 Year Diploma",
-  "Artificial Intelligence",
-  "Machine Learning",
-  "Data Science",
-  "Data Analytics",
-  "Cyber Security",
-  "Ethical Hacking",
-  "Full Stack Web Development",
-  "Web Development",
-  "Web Designing",
-  "Cloud Computing",
-  "React JS",
-  "Digital Marketing Course",
-  "Python",
-  "Java",
-  "6 Months Training",
-  "6 Weeks Training",
-  "Internship",
-  "Graphic Designing",
-  "Software Testing",
-  "Other",
+export const MAIN_COURSES = [
+  "UI/UX Design",
+  "Graphics Design",
+  "Front End Development",
+  "Full Stack Development",
+  "CMS & E-commerce",
+  "Digital Marketing & SEO",
 ];
 
-export const DEMO_COURSES = [
-  "Full Stack Web Development",
-  "Artificial Intelligence",
-  "Data Science",
-  "Cyber Security",
-  "Digital Marketing Course",
-  "Graphic Designing",
-  "6 Months Training",
-  "Internship",
-  "Other",
+export const PROGRAMMING_COURSES = [
+  "Python",
+  "Java",
+  "PHP",
+  "Node.js",
+  "C & C++",
 ];
+
+export const COURSES = [...MAIN_COURSES, ...PROGRAMMING_COURSES];
+export const DEMO_COURSES = COURSES;
 
 export const BRANCHES = [
   "Chandigarh",
