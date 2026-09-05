@@ -18,6 +18,7 @@ export default function LeadForm({
   note,
   title,
   subtitle,
+  grid = false,
 }) {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
@@ -141,7 +142,7 @@ export default function LeadForm({
       <div className={`form-success${success ? " show" : ""}`} role="status">
         {success}
       </div>
-      {className === "form-card" ? <div className="form-grid">{body}</div> : body}
+      {className === "form-card" || grid ? <div className="form-grid">{body}</div> : body}
       {note ? <p className="form-note">{note}</p> : null}
     </form>
   );

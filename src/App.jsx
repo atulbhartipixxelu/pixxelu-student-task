@@ -108,11 +108,11 @@ export default function App() {
 
         <ProgramSection />
 
+        <EventHighlights />
+
         <GoogleReviews />
 
         <EnquireSection />
-
-        <EventHighlights />
 
       </main>
 

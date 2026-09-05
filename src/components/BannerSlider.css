@@ -1,9 +1,9 @@
 .banner-slider {
-  --banner-h: 550px;
   position: relative;
   overflow: hidden;
-  height: var(--banner-h);
-  background: #0b0b12;
+  width: 100%;
+  aspect-ratio: 1920 / 550;
+  background: #fff;
   user-select: none;
   touch-action: pan-y;
 }
@@ -17,17 +17,15 @@
 .banner-slide {
   flex: 0 0 100%;
   min-width: 100%;
-  height: var(--banner-h);
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
 .banner-hit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: 100%;
-  height: var(--banner-h);
+  height: 100%;
   padding: 0;
   border: 0;
   background: none;
@@ -37,9 +35,7 @@
 .banner-hit img {
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-height: var(--banner-h);
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   display: block;
   pointer-events: none;

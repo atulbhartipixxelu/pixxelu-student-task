@@ -1,3 +1,4 @@
+import { WhatsAppIcon } from "./Icons.jsx";
 import "./IndustrialTraining.css";
 
 const PROGRAMS = [
@@ -54,6 +55,21 @@ export default function IndustrialTraining({ onOpenDemo }) {
             </span>
           ))}
           <em>and more…</em>
+        </div>
+
+        <div className="section-ctas">
+          <a
+            className="section-cta-wa"
+            href="https://wa.me/919218000707"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <WhatsAppIcon size={18} />
+            WhatsApp
+          </a>
+          <a className="section-cta-call" href="tel:+919218000707">
+            Call +91 92180 00707
+          </a>
         </div>
       </div>
     </section>

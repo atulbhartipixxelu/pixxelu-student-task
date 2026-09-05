@@ -1,6 +1,17 @@
 import { useState } from "react";
 import Button from "./Button.jsx";
 import { WhatsAppIcon } from "./Icons.jsx";
+import { DEMO_COURSES } from "../data.js";
+
+const PROGRAM_LOGOS = [
+  { name: "Semrush", file: "semrush.svg" },
+  { name: "Google Ads", file: "googleads.svg" },
+  { name: "Meta", file: "meta.svg" },
+  { name: "Google", file: "google.svg" },
+  { name: "Analytics", file: "analytics.svg" },
+  { name: "Instagram", file: "instagram.svg" },
+  { name: "YouTube", file: "youtube.svg" },
+];
 
 function isValidPhone(value) {
   return /^\d{10}$/.test(
@@ -10,10 +21,10 @@ function isValidPhone(value) {
 
 function ApplyForm() {
   const [values, setValues] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     phone: "",
     email: "",
+    course: "",
   });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
@@ -25,22 +36,22 @@ function ApplyForm() {
   function onSubmit(event) {
     event.preventDefault();
     const nextErrors = {};
-    const firstName = values.firstName.trim();
-    const lastName = values.lastName.trim();
+    const name = values.name.trim();
     const phone = values.phone.trim();
     const email = values.email.trim();
+    const course = values.course.trim();
 
-    if (firstName.length < 2) nextErrors.firstName = true;
-    if (lastName.length < 2) nextErrors.lastName = true;
+    if (name.length < 2) nextErrors.name = true;
     if (!isValidPhone(phone)) nextErrors.phone = true;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = true;
+    if (!course) nextErrors.course = true;
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) return;
 
     setErrors({});
     setSuccess("Thanks. Our team will call you shortly.");
-    setValues({ firstName: "", lastName: "", phone: "", email: "" });
+    setValues({ name: "", phone: "", email: "", course: "" });
   }
 
   return (
@@ -53,28 +64,18 @@ function ApplyForm() {
         {success}
       </div>
       <div className="apply-grid">
-        <label className={`field${errors.firstName ? " invalid" : ""}`}>
-          <span>First Name</span>
+        <label className={`field${errors.name ? " invalid" : ""}`}>
+          <span>Name</span>
           <input
-            name="firstName"
-            placeholder="First name"
-            value={values.firstName}
-            onChange={(e) => update("firstName", e.target.value)}
+            name="name"
+            placeholder="Your full name"
+            value={values.name}
+            onChange={(e) => update("name", e.target.value)}
           />
-          <small className="form-error">Please enter your first name.</small>
+          <small className="form-error">Please enter your name.</small>
         </label>
-        <label className={`field${errors.lastName ? " invalid" : ""}`}>
-          <span>Last Name</span>
-          <input
-            name="lastName"
-            placeholder="Last name"
-            value={values.lastName}
-            onChange={(e) => update("lastName", e.target.value)}
-          />
-          <small className="form-error">Please enter your last name.</small>
-        </label>
-        <label className={`field full${errors.phone ? " invalid" : ""}`}>
-          <span>Phone No.</span>
+        <label className={`field${errors.phone ? " invalid" : ""}`}>
+          <span>Phone</span>
           <input
             name="phone"
             inputMode="tel"
@@ -95,8 +96,22 @@ function ApplyForm() {
           />
           <small className="form-error">Enter a valid email.</small>
         </label>
+        <label className={`field full${errors.course ? " invalid" : ""}`}>
+          <span>Course</span>
+          <select
+            name="course"
+            value={values.course}
+            onChange={(e) => update("course", e.target.value)}
+          >
+            <option value="">--Select Course--</option>
+            {DEMO_COURSES.map((item) => (
+              <option key={item}>{item}</option>
+            ))}
+          </select>
+          <small className="form-error">Please select a course.</small>
+        </label>
         <Button type="submit" className="full">
-          Apply Now
+          Book Now
         </Button>
       </div>
       <p className="apply-note">Seats closing soon for the next 3-month batch.</p>
@@ -109,10 +124,7 @@ export default function ProgramSection() {
     <section className="program-section" id="program">
       <div className="container program-layout">
         <div className="program-info">
-          <span className="program-kicker">
-            <span className="program-ai">AI-Powered</span>
-            3-Month Classroom Program
-          </span>
+          <span className="program-kicker">AI-Powered 3-Month Classroom Program</span>
           <h2>
             Learn Digital Marketing with <em>AI-powered skills</em>
           </h2>
@@ -125,12 +137,19 @@ export default function ProgramSection() {
             Train in the classroom with ChatGPT, Gemini and AI ad tools the way agencies work today.
             Finish with real projects, a job-ready portfolio and interview prep.
           </p>
-          <div className="program-tools">
-            <span>SEO</span>
-            <span>Google Ads</span>
-            <span>Meta Ads</span>
-            <span>AI Content</span>
-            <span>Analytics</span>
+          <div className="program-tools" aria-label="Tools you will learn">
+            <div className="program-tools-track">
+              {[0, 1].map((copy) => (
+                <div className="program-tools-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
+                  {PROGRAM_LOGOS.map((logo) => (
+                    <span className="program-tool" key={`${copy}-${logo.name}`}>
+                      <img src={`/trust-logos/${logo.file}`} alt="" />
+                      {logo.name}
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
           <div className="program-facts">
             <div>

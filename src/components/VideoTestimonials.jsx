@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./VideoTestimonials.css";
 
 const VIDEOS = [
@@ -14,22 +14,183 @@ const VIDEOS = [
   },
 ];
 
-function youtubeSrc(id) {
-  const params = new URLSearchParams({
-    autoplay: "1",
-    mute: "1",
-    loop: "1",
-    playlist: id,
-    playsinline: "1",
-    modestbranding: "1",
-    rel: "0",
-    iv_load_policy: "3",
-  });
-  return `https://www.youtube-nocookie.com/embed/${id}?${params.toString()}`;
+function loadYouTubeApi() {
+  if (window.YT?.Player) return Promise.resolve(window.YT);
+  if (!window.__ytApiPromise) {
+    window.__ytApiPromise = new Promise((resolve) => {
+      const prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        prev?.();
+        resolve(window.YT);
+      };
+      if (!document.querySelector("script[src='https://www.youtube.com/iframe_api']")) {
+        const script = document.createElement("script");
+        script.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(script);
+      }
+    });
+  }
+  return window.__ytApiPromise;
+}
+
+function PlayIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M8 5.2v13.6L19 12 8 5.2Z" />
+    </svg>
+  );
+}
+
+function PauseIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M7 5h4v14H7V5Zm6 0h4v14h-4V5Z" />
+    </svg>
+  );
+}
+
+function MuteIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M4 9h4l5-4v14l-5-4H4V9Zm12.5 1.1 1.4-1.4 1.4 1.4 1.4-1.4 1.4 1.4-1.4 1.4 1.4 1.4-1.4 1.4-1.4-1.4-1.4 1.4-1.4-1.4 1.4-1.4-1.4-1.4Z"
+      />
+    </svg>
+  );
+}
+
+function VolumeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M4 9h4l5-4v14l-5-4H4V9Zm11.5 1.1a3.2 3.2 0 0 1 0 3.8l-1.3-1.1a1.6 1.6 0 0 0 0-1.6l1.3-1.1Zm2.3-2.4a6.2 6.2 0 0 1 0 8.6l-1.3-1.1a4.5 4.5 0 0 0 0-6.4l1.3-1.1Z"
+      />
+    </svg>
+  );
+}
+
+function TestimonialPlayer({ id, title, active, onPlay }) {
+  const wrapRef = useRef(null);
+  const playerRef = useRef(null);
+  const activeRef = useRef(active);
+  const [playing, setPlaying] = useState(active);
+  const [muted, setMuted] = useState(true);
+  activeRef.current = active;
+
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return undefined;
+
+    let cancelled = false;
+    const host = document.createElement("div");
+    wrap.appendChild(host);
+
+    loadYouTubeApi().then((YT) => {
+      if (cancelled) return;
+
+      playerRef.current = new YT.Player(host, {
+        videoId: id,
+        host: "https://www.youtube-nocookie.com",
+        width: "100%",
+        height: "100%",
+        playerVars: {
+          autoplay: 0,
+          mute: 1,
+          controls: 0,
+          disablekb: 1,
+          fs: 0,
+          modestbranding: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          cc_load_policy: 0,
+          playsinline: 1,
+          loop: 1,
+          playlist: id,
+          origin: window.location.origin,
+        },
+        events: {
+          onReady(event) {
+            event.target.mute();
+            if (activeRef.current) event.target.playVideo();
+          },
+          onStateChange(event) {
+            setPlaying(event.data === YT.PlayerState.PLAYING);
+          },
+        },
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      const player = playerRef.current;
+      playerRef.current = null;
+      player?.destroy?.();
+      host.remove();
+    };
+  }, [id]);
+
+  useEffect(() => {
+    const player = playerRef.current;
+    if (!player?.playVideo) return;
+    if (active) player.playVideo();
+    else player.pauseVideo();
+  }, [active]);
+
+  function togglePlay() {
+    const player = playerRef.current;
+    if (!player?.getPlayerState) return;
+    if (player.getPlayerState() === window.YT.PlayerState.PLAYING) {
+      player.pauseVideo();
+      return;
+    }
+    onPlay();
+    player.playVideo();
+  }
+
+  function toggleMute() {
+    const player = playerRef.current;
+    if (!player?.isMuted) return;
+    if (player.isMuted()) {
+      player.unMute();
+      setMuted(false);
+    } else {
+      player.mute();
+      setMuted(true);
+    }
+  }
+
+  return (
+    <div className="vt-frame">
+      <div className="vt-player" ref={wrapRef} title={title} />
+      {!playing ? (
+        <img
+          className="vt-poster"
+          src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+          alt=""
+        />
+      ) : null}
+      <div className="vt-shield" aria-hidden="true" />
+      <div className="vt-controls">
+        <button type="button" onClick={togglePlay} aria-label={playing ? "Pause video" : "Play video"}>
+          {playing ? <PauseIcon /> : <PlayIcon />}
+        </button>
+        <button type="button" onClick={toggleMute} aria-label={muted ? "Unmute video" : "Mute video"}>
+          {muted ? <MuteIcon /> : <VolumeIcon />}
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default function VideoTestimonials() {
   const [index, setIndex] = useState(0);
+  const [activeId, setActiveId] = useState(VIDEOS[0].id);
+
+  useEffect(() => {
+    setActiveId(VIDEOS[index].id);
+  }, [index]);
 
   function prev() {
     setIndex((current) => (current - 1 + VIDEOS.length) % VIDEOS.length);
@@ -61,16 +222,12 @@ export default function VideoTestimonials() {
               {VIDEOS.map((video) => (
                 <article className="vt-slide" key={video.id}>
                   <div className="vt-card">
-                    <div className="vt-frame">
-                      <iframe
-                        src={youtubeSrc(video.id)}
-                        title={`${video.name} — ${video.course} at Pixxelu Academy`}
-                        width="315"
-                        height="560"
-                        allow="autoplay; encrypted-media; picture-in-picture"
-                        allowFullScreen
-                      />
-                    </div>
+                    <TestimonialPlayer
+                      id={video.id}
+                      title={`${video.name} — ${video.course} at Pixxelu Academy`}
+                      active={activeId === video.id}
+                      onPlay={() => setActiveId(video.id)}
+                    />
                     <div className="vt-meta">
                       <b>{video.name}</b>
                       <span>{video.course}</span>

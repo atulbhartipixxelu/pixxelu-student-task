@@ -1,6 +1,6 @@
 .enquire {
   padding: 80px 0;
-  background: #fff;
+  background: var(--gray);
 }
 
 .enquire-layout {
@@ -12,13 +12,13 @@
 
 .enquire-copy h2 {
   margin: 0 0 16px;
-  font-size: clamp(28px, 3.4vw, 40px);
+  font-size: var(--section-heading);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
 }
 
-.enquire-copy > p {
+.enquire-copy > p:not(.about-kicker) {
   margin: 0;
   color: #555;
   font-size: 17px;

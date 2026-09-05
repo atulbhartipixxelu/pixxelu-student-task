@@ -1,6 +1,6 @@
 .google-reviews {
   padding: 72px 0 80px;
-  background: var(--gray);
+  background: #fff;
 }
 
 .gr-head {
@@ -10,7 +10,7 @@
 
 .gr-head h2 {
   margin: 0;
-  font-size: clamp(28px, 3.4vw, 40px);
+  font-size: var(--section-heading);
   font-weight: 800;
   letter-spacing: -0.03em;
 }

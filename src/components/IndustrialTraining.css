@@ -11,7 +11,7 @@
 
 .industrial-head h2 {
   margin: 0 0 6px;
-  font-size: clamp(28px, 3.4vw, 40px);
+  font-size: var(--section-heading);
   font-weight: 800;
   letter-spacing: -0.03em;
 }

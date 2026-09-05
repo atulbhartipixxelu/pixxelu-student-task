@@ -52,11 +52,12 @@ export default function TrustedMarquee() {
     <section className="trust-section" aria-label="AI-powered technologies">
       <div className="container">
         <div className="trust-head">
-          <p className="trust-badge">
-            <span className="trust-dot" />
-            AI-Powered Academy
-          </p>
-          <h2>Master industry technologies with AI-powered, job-ready skills</h2>
+          <p className="trust-badge">AI-Powered Academy</p>
+          <h2>
+            Master industry technologies with
+            <br />
+            <em>AI-powered</em>, job-ready skills
+          </h2>
           <div className="trust-stats">
             <div>
               <strong>16+</strong>

@@ -122,7 +122,7 @@ export default function Header({ onOpenDemo }) {
 
           <div className="header-cta">
             <Button type="button" onClick={onOpenDemo}>
-              Free Demo
+              Book Free Demo
             </Button>
             <a className="header-phone" href="tel:+919218000707" aria-label="Call 92180 00707">
               <span className="header-call-icon" aria-hidden="true">

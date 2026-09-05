@@ -2,6 +2,8 @@
   --black: #000;
   --white: #fff;
   --accent: #dc4a26;
+  --kicker: #dc4a26;
+  --section-heading: clamp(34px, 4vw, 46px);
   --gray: #f2f2f2;
   --blue: var(--accent);
   --blue-dark: var(--black);
@@ -91,6 +93,55 @@ p {
 
 .center {
   text-align: center;
+}
+
+.section-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.section-cta-wa,
+.section-cta-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 168px;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.section-cta-wa {
+  background: #25d366;
+}
+
+.section-cta-wa:hover {
+  background: #1ebe5a;
+}
+
+.section-cta-call {
+  background: var(--accent);
+}
+
+.section-cta-call:hover {
+  background: #c43f20;
+}
+
+@media (max-width: 520px) {
+  .section-cta-wa,
+  .section-cta-call {
+    width: 100%;
+    max-width: 320px;
+  }
 }
 
 .kicker {
@@ -259,7 +310,7 @@ p {
 /* Top bar */
 .topbar {
   overflow: hidden;
-  background: var(--blue);
+  background: var(--black);
   color: #fff;
   text-align: center;
   padding: 8px 16px;
@@ -691,18 +742,36 @@ p {
   padding-top: 4px;
 }
 
-.about-kicker {
-  display: inline-block;
-  margin: 0 0 14px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+.about-kicker,
+.placement-kicker,
+.program-kicker,
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
   color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.about-kicker::before,
+.placement-kicker::before,
+.program-kicker::before,
+.trust-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(220, 74, 38, 0.16);
 }
 
 .about-copy h1 {
-  font-size: clamp(30px, 3.5vw, 42px);
+  font-size: var(--section-heading);
   font-weight: 700;
   color: var(--black);
   margin: 0 0 18px;
@@ -710,7 +779,7 @@ p {
   max-width: 16ch;
 }
 
-.about-copy > p {
+.about-copy > p:not(.about-kicker) {
   margin: 0 0 14px;
   color: #555;
   font-size: 16px;
@@ -1910,85 +1979,7 @@ details.faq-item p {
   flex-shrink: 0;
 }
 
-/* Modal */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 80;
-  padding: 44px 28px 24px;
-  overflow: hidden;
-}
-
-.modal.open {
-  display: flex;
-}
-
-.modal-shell {
-  position: relative;
-  width: min(460px, 100%);
-  max-width: 100%;
-}
-
-.modal-card {
-  background: #fff;
-  width: 100%;
-  border-radius: 12px;
-  border: 5px solid var(--accent);
-  padding: 22px 22px 18px;
-  position: relative;
-  max-height: min(82vh, 640px);
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.modal-card h3 {
-  text-align: center;
-  font-size: 24px;
-}
-
-.modal-card form,
-.modal-card .field,
-.modal-card input,
-.modal-card select,
-.modal-card .pixxelu_button {
-  max-width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-}
-
-.modal-close {
-  position: absolute;
-  top: -16px;
-  right: -16px;
-  z-index: 3;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  border: 2px solid #fff;
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 1;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 18%);
-}
-
-@media (max-width: 640px) {
-  .modal {
-    padding: 42px 16px 16px;
-  }
-
-  .modal-close {
-    top: -18px;
-    right: 0;
-  }
-}
+/* Modal styles live in DemoModal.css */
 
 .nav-mobile {
   display: none;
@@ -2351,45 +2342,23 @@ details.faq-item p {
 
 .program-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
-  gap: 56px 72px;
+  grid-template-columns: minmax(0, 1.5fr) minmax(340px, 0.72fr);
+  gap: 40px 28px;
   align-items: start;
 }
 
 .program-kicker {
-  display: inline-flex;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  color: #111;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.program-ai {
-  display: inline-flex;
-  align-items: center;
-  height: 28px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 11px;
-  letter-spacing: 0.14em;
 }
 
 .program-section h2 {
   font-family: Inter, Outfit, sans-serif;
-  font-size: clamp(34px, 4.2vw, 48px);
+  font-size: var(--section-heading);
   font-weight: 800;
   color: var(--black);
   line-height: 1.12;
   letter-spacing: -0.035em;
   margin: 0 0 18px;
-  max-width: 560px;
 }
 
 .program-section h2 em {
@@ -2401,7 +2370,6 @@ details.faq-item p {
   color: #555;
   font-size: 16px;
   line-height: 1.75;
-  max-width: 540px;
   margin: 0 0 12px;
 }
 
@@ -2412,54 +2380,94 @@ details.faq-item p {
 }
 
 .program-tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  overflow: hidden;
   margin: 20px 0 18px;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
-.program-tools span {
-  padding: 8px 14px;
+.program-tools-track {
+  display: flex;
+  width: max-content;
+  animation: program-tools-scroll 22s linear infinite;
+}
+
+.program-tools-group {
+  display: flex;
+  gap: 10px;
+  padding-right: 10px;
+}
+
+.program-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 14px;
   border-radius: 999px;
   background: var(--gray);
   font-size: 13px;
   font-weight: 600;
-  color: #333;
+  color: #222;
+  white-space: nowrap;
+}
+
+.program-tool img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
+@keyframes program-tools-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .program-tools-track {
+    animation: none;
+  }
 }
 
 .program-facts {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin: 0 0 24px;
-  max-width: 520px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 36px;
 }
 
 .program-facts div {
   background: var(--gray);
-  border-radius: 16px;
-  padding: 16px 18px;
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
 }
 
 .program-facts span {
   display: block;
-  font-size: 12px;
+  font-size: 11px;
   color: #777;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  white-space: nowrap;
 }
 
 .program-facts strong {
   display: block;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   color: var(--black);
   line-height: 1.2;
 }
 
 .program-rating {
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 4px;
 }
 
 .program-rating svg {
@@ -2473,6 +2481,7 @@ details.faq-item p {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-top: 8px;
 }
 
 .program-wa,
@@ -2506,12 +2515,12 @@ details.faq-item p {
 }
 
 .program-call {
-  background: var(--black);
+  background: var(--accent);
   color: #fff;
 }
 
 .program-call:hover {
-  background: #1a1a1a;
+  background: #c43f20;
 }
 
 .apply-card {
@@ -2560,14 +2569,17 @@ details.faq-item p {
   color: var(--black);
 }
 
-.apply-card .field input {
+.apply-card .field input,
+.apply-card .field select {
+  width: 100%;
   background: var(--gray);
   border: 1px solid transparent;
   border-radius: 12px;
   padding: 13px 14px;
 }
 
-.apply-card .field input:focus {
+.apply-card .field input:focus,
+.apply-card .field select:focus {
   outline: none;
   border-color: var(--accent);
   background: #fff;
@@ -2585,6 +2597,7 @@ details.faq-item p {
   font-size: 13px;
   margin: 16px 0 0;
 }
+
 
 /* Success stories */
 .success-section {
@@ -2737,7 +2750,7 @@ details.faq-item p {
   }
 
   .program-section h2 {
-    font-size: 28px;
+    font-size: var(--section-heading);
   }
 
   .program-facts div {

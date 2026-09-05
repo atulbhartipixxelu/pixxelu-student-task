@@ -11,10 +11,10 @@
 
 .course-offers-head h2 {
   margin: 0 0 10px;
-  font-size: clamp(26px, 3.2vw, 36px);
+  font-size: var(--section-heading);
 }
 
-.course-offers-head p {
+.course-offers-head p:not(.about-kicker) {
   margin: 0;
   color: #555;
   font-size: 15px;

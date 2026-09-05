@@ -33,12 +33,8 @@
 }
 
 .placement-kicker {
-  margin: 0 0 6px;
-  color: #1a1a2e;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  justify-content: center;
+  margin: 0 0 8px;
 }
 
 .placement-head h2 {
@@ -170,12 +166,12 @@
 }
 
 .placement-cta-call {
-  background: var(--black);
+  background: var(--accent);
   color: #fff;
 }
 
 .placement-cta-call:hover {
-  background: #1a1a1a;
+  background: #c43f20;
 }
 
 @keyframes placement-scroll {

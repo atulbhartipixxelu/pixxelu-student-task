@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import LeadForm from "./LeadForm.jsx";
 import { DEMO_COURSES } from "../data.js";
+import "./DemoModal.css";
 
 export default function DemoModal({ open, onClose }) {
   useEffect(() => {
@@ -27,18 +28,26 @@ export default function DemoModal({ open, onClose }) {
       }}
     >
       <div className="modal-shell">
-        <button className="modal-close" type="button" onClick={onClose} aria-label="Close">
-          ×
-        </button>
         <div className="modal-card">
-          <h3 id="demoTitle">Request a demo</h3>
+          <button className="modal-close" type="button" onClick={onClose} aria-label="Close">
+            ×
+          </button>
+          <div className="modal-head">
+            <img className="modal-mark" src="/favicon.png" alt="" />
+            <div>
+              <p className="modal-kicker">Pixxelu Academy</p>
+              <h3 id="demoTitle">Let’s find your course</h3>
+              <span>Personal guidance · WhatsApp confirm</span>
+            </div>
+          </div>
           <LeadForm
-            className=""
-            fields={["name", "phone", "course", "email"]}
+            className="demo-form"
+            grid
+            fields={["name", "phone", "email", "course"]}
             courseOptions={DEMO_COURSES}
-            successMessage="Demo request sent. We will confirm your slot on WhatsApp."
-            submitLabel="Book Free Demo"
-            submitStyle={{ width: "100%", marginTop: 8 }}
+            successMessage="Thanks. Our team will confirm on WhatsApp."
+            submitLabel="Book Now"
+            submitStyle={{ gridColumn: "1 / -1" }}
           />
         </div>
       </div>
